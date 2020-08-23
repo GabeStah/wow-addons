@@ -1,0 +1,34 @@
+local kMacro = kMacro
+local _G, _ = _G, _
+local table, tinsert, tremove, wipe, sort, date, time, random = table, table.insert, table.remove, wipe, sort, date, time, random
+local math, tostring, string, strjoin, strlower, strsplit, strsub, strtrim, strupper, floor, tonumber = math, tostring, string, string.join, string.lower, string.split, string.sub, string.trim, string.upper, math.floor, tonumber
+local select, pairs, print, next, type, unpack = select, pairs, print, next, type, unpack
+local loadstring, assert, error = loadstring, assert, error
+function kMacro:PLAYER_ENTERING_WORLD()
+	RegisterAddonMessagePrefix("kMacro")
+	kMacro:Debug('PLAYER_ENTERING_WORLD')
+	kMacro:UpdateAllMacros()
+end
+--[[
+TALENT REMOVE:
+1. PLAYER_SPECIALIZATION_CHANGED
+2. PLAYER_TALENT_UPDATE
+3. CHARACTER_POINTS_CHANGED
+
+TALENT SELECT:
+1. PLAYER_SPECIALIZATION_CHANGED
+2. PLAYER_TALENT_UPDATE
+3. CHARACTER_POINTS_CHANGED
+
+1. PLAYER_SPECIALIZATION_CHANGED
+2. PLAYER_TALENT_UPDATE
+3. GLYPH_UPDATED
+]]
+function kMacro:PLAYER_SPECIALIZATION_CHANGED()
+	kMacro:Debug('PLAYER_SPECIALIZATION_CHANGED()')
+	kMacro:UpdateAllMacros()
+end
+function kMacro:ZONE_CHANGED()
+	kMacro:Debug('ZONE_CHANGED()')
+	kMacro:UpdateAllMacros()
+end

@@ -1,0 +1,15 @@
+﻿## Interface: 20400
+## LoadOnDemand: 1
+
+## Title: Lib: CandyBar
+## Notes: Timerbar embeddable library
+## Author: Ammo
+## X-ReleaseDate: "$Date: 2008-03-26 07:55:28 -0400 (Wed, 26 Mar 2008) $"
+## X-Category: Library
+## X-AceLibrary-CandyBar-2.0: true
+
+## OptionalDeps: Ace2, PaintChipsLib
+
+embeds.xml
+
+CandyBar-2.0\CandyBar-2.0.lua

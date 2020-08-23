@@ -1,0 +1,18 @@
+## Title: kMiscellenaeous |cffb5a5d5[0.0.200]|r |cff7fff7fAce3|r 
+## Version: 0.0.200
+## Author: Kulldam
+## Notes: A variety of miscellaneous functions for personal use.
+## Interface: 70300
+## SavedVariables: kMiscellaneousDB
+
+embeds.xml
+core.lua
+options.lua
+color.lua
+events.lua
+grid.lua
+item.lua
+manual.lua
+tally.lua
+timer.lua
+utility.lua

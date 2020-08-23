@@ -1,0 +1,74 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>kRating</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1de93a26-31b0-4c33-8a22-d96546a5e28c}</ProjectGuid>
+    <WowPath>D:\Games\World of Warcraft\</WowPath>
+    <AssemblyName>kRating</AssemblyName>
+    <RootNamespace>kRating</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <InterfaceVersion>20300</InterfaceVersion>
+    <AddonTitle>kRating</AddonTitle>
+    <AddonNotes>
+    </AddonNotes>
+    <Author>Gabe</Author>
+    <Dependencies>Ace2</Dependencies>
+    <AddonVersion>1.0</AddonVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\1.0\WowAddonStudio.targets" />
+  <ItemGroup>
+    <Content Include="kRating.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="kRating.lua">
+      <SubType>Code</SubType>
+      <DependentUpon>kRating.xml</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kRating.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="Libs/AceAddon-2.0/AceAddon-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceConsole-2.0/AceConsole-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceEvent-2.0/AceEvent-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceLibrary/AceLibrary.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceOO-2.0/AceOO-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Locale-enUS.lua">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libs\" />
+    <Folder Include="Libs\AceAddon-2.0\" />
+    <Folder Include="Libs\AceConsole-2.0\" />
+    <Folder Include="Libs\AceEvent-2.0\" />
+    <Folder Include="Libs\AceLibrary\" />
+    <Folder Include="Libs\AceOO-2.0\" />
+  </ItemGroup>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>

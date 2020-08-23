@@ -1,0 +1,175 @@
+------------------------------------------------------------------------
+r860 | mikk | 2009-10-09 17:52:37 +0000 (Fri, 09 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-EditBox.lua
+
+Ticket 21: Ability to accept links for EditBox Widget
+Implemented the given patch pretty much as-is, except made it upgradeable.
+------------------------------------------------------------------------
+r859 | mikk | 2009-10-05 16:09:42 +0000 (Mon, 05 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/AceConsole-3.0/AceConsole-3.0.lua
+
+- Add :Printf() so you don't have to do Print(format()). Amagad saving several Lua instructions per addon :P
+- Optimize :Print() so it generates less garbage strings when given multiple arguments.
+------------------------------------------------------------------------
+r858 | mikk | 2009-10-03 09:21:20 +0000 (Sat, 03 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/AceTab-3.0/AceTab-3.0.lua
+
+Stop calling the "self:error" that doesn't exist. Call error() instead. Fixes stupid message on PTR. It'll still error - but now at least we'll get a sane error.
+------------------------------------------------------------------------
+r857 | mikk | 2009-10-02 18:04:31 +0000 (Fri, 02 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-EditBox.lua
+
+Should fix ticket 83 - EditBox:SetText fails to hide "Okay" for numbers
+------------------------------------------------------------------------
+r856 | nevcairiel | 2009-09-27 09:32:19 +0000 (Sun, 27 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-ScrollFrame.lua
+
+AceGUI-3.0: Clear some more vars in the ScrollFrame when releasing
+------------------------------------------------------------------------
+r855 | nevcairiel | 2009-09-26 12:04:58 +0000 (Sat, 26 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-DropDownGroup.lua
+
+AceGUI-3.0: Fix the margins of the dropdown group to be consistent with other widgets.
+
+------------------------------------------------------------------------
+r854 | nevcairiel | 2009-09-26 11:58:34 +0000 (Sat, 26 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-BlizOptionsGroup.lua
+
+AceGUI-3.0: Adjust the margins of the BlizOptionsGroup to be the same on both sides.
+
+------------------------------------------------------------------------
+r853 | nevcairiel | 2009-09-26 11:53:58 +0000 (Sat, 26 Sep 2009) | 3 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-ScrollFrame.lua
+
+AceGUI-3.0: ScrollFrame: Hide the scrollbar when there is no overflowing content, and allow the Layout functions to use that space 
+for widgets. EXPERIMENTAL and might break!
+
+------------------------------------------------------------------------
+r852 | nevcairiel | 2009-09-25 13:46:00 +0000 (Fri, 25 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/tests/AceDB-3.0-callbacks.lua
+
+Add an additional test case
+
+------------------------------------------------------------------------
+r851 | nevcairiel | 2009-09-25 12:46:37 +0000 (Fri, 25 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-TreeGroup.lua
+
+Fix more errors caused by specific function call orders.
+
+------------------------------------------------------------------------
+r850 | nevcairiel | 2009-09-25 12:29:01 +0000 (Fri, 25 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-CheckBox.lua
+
+AceGUI-3.0: CheckBox: shorten the inline description a bit, so it doesnt fall off the world.
+
+------------------------------------------------------------------------
+r849 | nevcairiel | 2009-09-25 12:27:35 +0000 (Fri, 25 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-TreeGroup.lua
+
+Fix a bug with loading order weirdness.
+
+------------------------------------------------------------------------
+r848 | nevcairiel | 2009-09-25 12:21:26 +0000 (Fri, 25 Sep 2009) | 3 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-TreeGroup.lua
+
+AceGUI-3.0: TreeGroup: Refresh the layout of the TreeGroup Content Frame after changing the width of the tree-frame using the 
+drag-handle (Ticket #61)
+
+------------------------------------------------------------------------
+r847 | nevcairiel | 2009-09-25 11:51:36 +0000 (Fri, 25 Sep 2009) | 3 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/AceGUI-3.0.lua
+
+AceGUI-3.0: Fix aligning of widgets in the Flow-Layout if one widget is set to full height, but there is still space on the same row 
+for more widgets (Ticket #73)
+
+------------------------------------------------------------------------
+r846 | ammo | 2009-09-17 10:51:12 +0000 (Thu, 17 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/CallbackHandler-1.0/CallbackHandler-1.0.lua
+
+update to 1.0.5 
+------------------------------------------------------------------------
+r845 | nevcairiel | 2009-09-16 11:19:31 +0000 (Wed, 16 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/CallbackHandler-1.0/CallbackHandler-1.0.lua
+
+Update to CBH-1.0 r4
+
+------------------------------------------------------------------------
+r844 | nevcairiel | 2009-09-14 08:54:40 +0000 (Mon, 14 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/AceGUI-3.0.lua
+
+AceGUI-3.0: More fixes to anchoring and offsetting.
+
+------------------------------------------------------------------------
+r843 | nevcairiel | 2009-09-14 08:37:05 +0000 (Mon, 14 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/AceGUI-3.0.lua
+
+AceGUI-3.0: Don't forget to bump versions, doh!
+
+------------------------------------------------------------------------
+r842 | nevcairiel | 2009-09-14 08:35:16 +0000 (Mon, 14 Sep 2009) | 3 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/AceGUI-3.0.lua
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-TabGroup.lua
+
+AceGUI-3.0: Change anchoring and offset behavior to potentially fix mis-aligned options when using two groups next to each other. 
+This change *may* introduce regressions in the layout, please report any mis-aligned widgets in the Flow layout.
+
+------------------------------------------------------------------------
+r841 | nevcairiel | 2009-09-14 08:01:41 +0000 (Mon, 14 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-TabGroup.lua
+
+AceGUI-3.0: Fix the positioning of the TabGroup widget with a visible title (Ticket #71)
+
+------------------------------------------------------------------------
+r840 | nevcairiel | 2009-09-10 10:24:32 +0000 (Thu, 10 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/AceDB-3.0/AceDB-3.0.lua
+
+AceDB-3.0: Ensure a namespace is set to the correct profile on load.
+
+------------------------------------------------------------------------
+r839 | nevcairiel | 2009-09-08 08:27:15 +0000 (Tue, 08 Sep 2009) | 4 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-DropDown.lua
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-InteractiveLabel.lua
+
+AceGUI-3.0:
+	- DropDown: Added a GetValue() API to the Widget (Ticket #69)
+	- InteractiveLabel: Properly align the label and the icon (Ticket #60)
+
+------------------------------------------------------------------------
+r838 | nevcairiel | 2009-09-08 08:14:12 +0000 (Tue, 08 Sep 2009) | 4 lines
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-Button.lua
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-CheckBox.lua
+
+AceGUI-3.0:
+	- Button: Pass the arguments of the OnClick handler to the OnClick callback (Ticket #57)
+	- Checkbox: Improve the visual display of the hover texture.
+
+------------------------------------------------------------------------
+r837 | mikk | 2009-09-07 13:19:37 +0000 (Mon, 07 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-Slider.lua
+
+Fix for blizzard slider bug: If you SetMinMax after SetValue, it wouldn't move the draghandle like it should. So now, if someone calls SetMinMax, we re-call SetValue.
+------------------------------------------------------------------------

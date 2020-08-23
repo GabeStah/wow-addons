@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r85 | gabestah | 2013-01-17 08:45:46 +0000 (Thu, 17 Jan 2013) | 1 line
+Changed paths:
+   M /trunk/Options/Core.lua
+
+Bump
+------------------------------------------------------------------------
+r84 | gabestah | 2012-12-19 04:38:45 +0000 (Wed, 19 Dec 2012) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+   A /trunk/Sounds/penguin.ogg
+   A /trunk/Sounds/penguin2.ogg
+   A /trunk/Sounds/penguinstep.ogg
+
+ADDED: Penguin sounds for Kain!
+------------------------------------------------------------------------
+r83 | gabestah | 2012-12-14 23:45:32 +0000 (Fri, 14 Dec 2012) | 1 line
+Changed paths:
+   M /trunk/Client/Core.lua
+   M /trunk/Gui/Core.lua
+   M /trunk/Gui/Wishlist.lua
+   M /trunk/Options/Core.lua
+   M /trunk/Server/Core.lua
+   M /trunk/WeakAuras/Core.lua
+   M /trunk/kAuction.toc
+
+Bump 5.0.1.
+------------------------------------------------------------------------

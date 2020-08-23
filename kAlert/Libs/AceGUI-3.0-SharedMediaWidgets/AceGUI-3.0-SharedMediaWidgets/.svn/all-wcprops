@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kAlert/!svn/ver/1/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets
+END
+SharedFunctions.lua
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kAlert/!svn/ver/1/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/SharedFunctions.lua
+END
+BorderWidget.lua
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/BorderWidget.lua
+END
+widget.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/widget.xml
+END
+BackgroundWidget.lua
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/BackgroundWidget.lua
+END
+prototypes.lua
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/prototypes.lua
+END
+FontWidget.lua
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/FontWidget.lua
+END
+SoundWidget.lua
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/SoundWidget.lua
+END
+StatusbarWidget.lua
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kAlert/!svn/ver/3/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets/StatusbarWidget.lua
+END

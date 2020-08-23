@@ -1,0 +1,57 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>kWintergrasp</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{116aa4ea-bd5d-49d9-bd03-f26d3a3c4efa}</ProjectGuid>
+    <AssemblyName>kWintergrasp</AssemblyName>
+    <RootNamespace>kWintergrasp</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\2.0\WowAddonStudio.targets" />
+  <ItemGroup>
+    <Content Include="kWintergrasp.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="kWintergrasp.lua">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs/AceAddon-2.0/AceAddon-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceConsole-2.0/AceConsole-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceEvent-2.0/AceEvent-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceLibrary/AceLibrary.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Libs/AceOO-2.0/AceOO-2.0.lua">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libs\" />
+    <Folder Include="Libs\AceAddon-2.0\" />
+    <Folder Include="Libs\AceConsole-2.0\" />
+    <Folder Include="Libs\AceEvent-2.0\" />
+    <Folder Include="Libs\AceLibrary\" />
+    <Folder Include="Libs\AceOO-2.0\" />
+  </ItemGroup>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>

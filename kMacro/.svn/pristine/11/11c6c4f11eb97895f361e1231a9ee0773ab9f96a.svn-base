@@ -1,0 +1,490 @@
+local kMacro = kMacro
+local _G, _ = _G, _
+local table, tinsert, tremove, wipe, sort, date, time, random = table, table.insert, table.remove, wipe, sort, date, time, random
+local math, tostring, string, strlen, strjoin, strlower, strsplit, strsub, strtrim, strupper, floor, tonumber = math, tostring, string, string.len, string.join, string.lower, string.split, string.sub, string.trim, string.upper, math.floor, tonumber
+local select, pairs, print, next, type, unpack = select, pairs, print, next, type, unpack
+local loadstring, assert, error = loadstring, assert, error
+-- Author      : Gabe
+-- Create Date : 2/15/2009 7:20:42 PM
+local INSERTIONS_GENERATION_SEPARATOR = '&'
+kMacro.minRequiredVersion = '0.6.124';
+kMacro.version = '0.6.124';
+kMacro.versions = {};
+
+kMacro.defaults = {
+	profile = {
+		debug = {
+			enabled = false,
+			threshold = 1,
+		},
+		macros = {
+			enabled = false,
+			list = {
+				
+			},
+			temp = {},
+		},
+	},
+};
+kMacro.timers = {};
+kMacro.threading = {};
+kMacro.threading.timers = {};
+kMacro.threading.timerPool = {};
+-- Create Options Table
+kMacro.options = {
+    name = "kMacro",
+    handler = kMacro,
+    type = 'group',
+    args = {
+		description = {
+			name = '',
+			type = 'description',
+			order = 0,
+			hidden = true,
+		},	
+		debug = {
+			name = 'Debug',
+			type = 'group',
+			args = {
+				enabled = {
+					name = 'Enabled',
+					type = 'toggle',
+					desc = 'Toggle Debug mode',
+					set = function(info,value) kMacro.db.profile.debug.enabled = value end,
+					get = function(info) return kMacro.db.profile.debug.enabled end,
+				},
+				threshold = {
+					name = 'Threshold',
+					desc = 'Description for Debug Threshold',
+					type = 'select',
+					values = {
+						[1] = 'Low',
+						[2] = 'Normal',
+						[3] = 'High',
+					},
+					style = 'dropdown',
+					set = function(info,value) kMacro.db.profile.debug.threshold = value end,
+					get = function(info) return kMacro.db.profile.debug.threshold end,
+				},
+			},
+			cmdHidden = true,
+		},
+        config = {
+			type = 'execute',
+			name = 'Config',
+			desc = 'Open the Configuration Interface',
+			func = function() 
+				kMacro.dialog:Open("kMacro") 
+			end,
+			guiHidden = true,
+        },    
+        version = {
+			type = 'execute',
+			name = 'Version',
+			desc = 'Check your kMacro version',
+			func = function() 
+				kMacro:Print("Version: |cFF"..kMacro:RGBToHex(0,255,0)..kMacro.version.."|r");
+			end,
+			guiHidden = true,
+        },
+		macros = {
+			name = 'Macros',
+			type = 'group',
+			cmdHidden = true,
+			args = {
+				macrosetup = {
+					name = 'Macro Setup',
+					type = 'group',
+					cmdHidden = true,
+					order = 10,
+					args = {						
+					},
+				},
+			},
+		},
+	},
+};
+function kMacro:Options_BuildMacroOptions()
+	self.options.args.macros.args.macrosetup.args = {}
+	self.options.args.macros.args.macrosetup.args.inline = {
+		name = 'Add New',
+		type = 'group',
+		guiInline = true,
+		order = 1,
+		args = {
+			name = {
+				name = 'Parent Macro Name',
+				type = 'input',
+				desc = 'Name of the parent macro you wish this instance to overwrite when activated.',
+				order = 1,
+				set = function(info,value) 
+					kMacro.db.profile.macros.temp.name = value;
+				end,
+				get = function(info)
+					return kMacro.db.profile.macros.temp.name;
+				end,
+			},
+			isGeneral = {
+				name = 'General Macro',
+				type = 'toggle',
+				desc = 'Check if the parent macro is in the General Macro section.',
+				order = 2,
+				set = function(info,value) 
+					kMacro.db.profile.macros.temp.isGeneral = value;
+				end,
+				get = function(info)
+					return kMacro.db.profile.macros.temp.isGeneral;
+				end,
+			},
+			instanceName = {
+				name = 'Instance Name',
+				type = 'input',
+				desc = '(Optional) name or identifier for this particular macro instance.  Useful for organizing your instances.',
+				order = 3,
+				set = function(info,value) 
+					kMacro.db.profile.macros.temp.instanceName = value;
+				end,
+				get = function(info)
+					return kMacro.db.profile.macros.temp.instanceName;
+				end,				
+			},
+			add = {
+				name = 'Create New Instance',
+				type = 'execute',
+				order = 4,
+				func = function()
+					-- Add new macro
+					kMacro:AddMacro(kMacro.db.profile.macros.temp.name, kMacro.db.profile.macros.temp.isGeneral, kMacro.db.profile.macros.temp.instanceName)
+					kMacro:Options_BuildMacroOptions();
+				end,
+			},
+		},
+	}
+	for iMacro,vMacro in pairs(self.db.profile.macros.list) do
+		if vMacro.visible then
+			self.options.args.macros.args.macrosetup.args[vMacro.name..vMacro.id] = {
+				name = vMacro.instanceName and vMacro.instanceName or iMacro,
+				type = 'group',
+				guiInline = false,
+				childGroups = 'tab',
+				order = iMacro,
+				args = {
+					instanceName = {
+						name = 'Instance Name',
+						type = 'input',
+						desc = '(Optional) name or identifier for this particular macro instance.  Useful for organizing your instances.',
+						order = 1,
+						set = function(info,value) 
+							vMacro.instanceName = value;
+							self:Options_BuildMacroOptions();
+						end,
+						get = function(info)
+							return vMacro.instanceName;
+						end,				
+					},
+					name = {
+						name = 'Parent Macro Name',
+						type = 'input',
+						desc = 'Name of the parent macro you wish this instance to overwrite when activated.',
+						order = 2,
+						set = function(info,value) 
+							vMacro.name = value;
+						end,
+						get = function(info)
+							return vMacro.name;
+						end,
+					},
+					isGeneral = {
+						name = 'General Macro',
+						type = 'toggle',
+						desc = 'Check if the parent macro is in the General Macro section.',
+						order = 3,
+						set = function(info,value) 
+							vMacro.isGeneral = value;
+						end,
+						get = function(info)
+							return vMacro.isGeneral;
+						end,
+					},
+					visible = {
+						name = 'Hide',
+						type = 'execute',
+						func = function()
+							vMacro.visible = false;
+							self:Options_BuildMacroOptions();
+						end,
+						width = 'half',
+						order = 0,
+					},
+					activationLabel = {
+						type = 'description',
+						name = function()
+							local valid, message = self:IsMacroValid(vMacro)
+							if not valid then return message end
+						end,
+						fontSize = 'large',
+						width = 'full',
+						order = 5,
+					},
+					inserts = {
+						name = 'Inserts',
+						type = 'group',
+						childGroups = 'tab',
+						order = 6,
+						args = kMacro:Options_CreateInsertOptions(vMacro),
+					},
+					body = {
+						name = 'Body',
+						type = 'input',
+						desc = 'Macro text that will replace the parent macro text when this instance is activated.',
+						multiline = true,
+						width = 'full',
+						order = 6,
+						set = function(info,value)
+							local len = strlen(value)
+							if len <=255 then
+								vMacro.body = value;
+							else
+								self:Print('Macro length exceeds 255; shorten and try again.')
+							end
+							kMacro:SaveMacro(vMacro.id);
+						end,
+						get = function(info)
+							return vMacro.body;
+						end,
+					},
+					bodyLabel = {
+						type = 'description',
+						name = function()
+							local valid = self:IsMacroValid(vMacro)
+							if valid then
+								local insertions, count = self:GetMacroInsertions(vMacro)
+								if insertions then
+									return self:GetMacroBodyFinal(vMacro, insertions)	
+								else
+									return self:GetMacroBodyFinal(vMacro)
+								end
+							end
+						end,
+						width = 'full',
+						order = 7,
+					},
+					save = {
+						name = 'Save',
+						type = 'execute',
+						func = function()
+							kMacro:SaveMacro(vMacro.id);
+						end,
+						order = 8,
+					},
+					delete = {
+						name = 'Delete',
+						type = 'execute',
+						func = function()
+							kMacro:DeleteMacro(vMacro.id);
+							kMacro:Options_BuildMacroOptions();
+						end,
+						order = 9,
+					},
+				},
+			}		
+		else
+			self.options.args.macros.args.macrosetup.args[vMacro.name..vMacro.id] = {
+				name = vMacro.instanceName and vMacro.instanceName or iMacro,
+				type = 'group',
+				guiInline = true,
+				order = iMacro,
+				args = {
+					instanceName = {
+						name = 'Instance Name',
+						type = 'input',
+						desc = '(Optional) name or identifier for this particular macro instance.  Useful for organizing your instances.',
+						order = 1,
+						set = function(info,value) 
+							vMacro.instanceName = value;
+							kMacro:Options_BuildMacroOptions();
+						end,
+						get = function(info)
+							return vMacro.instanceName;
+						end,				
+					},
+					visible = {
+						name = 'Show',
+						type = 'execute',
+						width = 'half',
+						func = function()
+							vMacro.visible = true;
+							kMacro:Options_BuildMacroOptions();
+						end,
+						order = 0,
+					},
+				},
+			}
+		end
+	end
+end
+function kMacro:Options_CreateCustomOptions()
+	local tempTable = {
+		name = 'Macro Setup',
+		type = 'group',
+		cmdHidden = true,
+		args = {
+			inline = {
+				name = 'Purpose',
+				type = 'group',
+				guiInline = true,
+				order = 1,
+				args = {
+					addName = {
+						name = 'INSERT STUFF ABOUT MACRO SETUP.',
+						type = 'description',
+						order = 1,
+						width = 'full',
+					},
+				},
+			},						
+		},
+	}
+	local id, name, description, icon, background, role
+	-- Loop specs	
+	for indexSpec=1,GetNumSpecializations() do
+		id, name, description, icon, background, role = GetSpecializationInfo(indexSpec)
+		kMacro:Debug(GetSpecializationInfo(indexSpec))
+		self.options.args.macros.args[name] = {
+			name = name,
+			type = 'group',
+			cmdHidden = true,
+			icon = icon,
+			order = indexSpec,
+			args = {
+				inline = {
+					name = 'Purpose',
+					type = 'group',
+					guiInline = true,
+					order = 1,
+					args = {
+						addName = {
+							name = 'INSERT STUFF ABOUT MACRO SETUP.',
+							type = 'description',
+							order = 1,
+							width = 'full',
+						},
+						name = {
+							name = 'Name',
+							type = 'input',
+							order = 2,
+							set = function(info,value) 
+								kMacro.db.profile.macros.temp.name = value;
+							end,
+							get = function(info)
+								return kMacro.db.profile.macros.temp.name;
+							end,
+						},
+						isGeneral = {
+							name = 'General Macro',
+							type = 'toggle',
+							set = function(info,value) 
+								kMacro.db.profile.macros.temp.isGeneral = value;
+							end,
+							get = function(info)
+								return kMacro.db.profile.macros.temp.isGeneral;
+							end,
+						},
+						add = {
+							name = 'Add Macro',
+							type = 'execute',
+							order = 2,
+							func = function()
+								-- Add new macro
+								kMacro:AddMacro(kMacro.db.profile.macros.temp.name, kMacro.db.profile.macros.temp.isGeneral)
+								kMacro:Options_BuildMacroOptions();
+							end,
+						},
+					},
+				},						
+			},
+		};
+	end
+	kMacro:Options_BuildMacroOptions();
+end
+
+function kMacro:Options_CreateInsertOptions(macro)
+	local objReturn = {}
+	local inserts = macro.inserts or {}
+	if not macro.inserts then macro.inserts = {} end
+	for index=1,#macro.inserts + 1 do
+		objReturn['insertGroup'..index] = {
+			type = 'group',
+			name = ('%s [%s]'):format('Insert', index),
+			args = {
+				[('insert%s'):format(index)] = {
+					name = ('%s [%s]'):format('Insert', index),
+					type = 'input',
+					desc = 'Insert.',
+					multiline = true,
+					width = 'full',
+					order = index,
+					set = function(info,value)
+						self:Insert_UpdateValue(macro, value, index)
+						self:SaveMacro(macro.id)
+						self:Options_BuildMacroOptions()
+					end,
+					get = function(info)
+						return self:Insert_GetValue(macro, index)
+					end,
+				},
+				[('insert%sactivation'):format(index)] = {
+					type = 'description',
+					name = function()
+						if macro.inserts and macro.inserts[index] then
+							local success, message, err = self:Insert_Validate(macro.inserts[index].value)
+							return err and ('%s: %s\n'):format(message, err) or message and ('%s\n'):format(message) or ''
+						end
+					end,
+					width = 'full',
+					fontSize='large',
+					order = index,
+				},
+				[('insert%sindex'):format(index)] = {
+					name = ('%s'):format('Change Index'),
+					type = 'input',
+					desc = 'Change the index of this insert, "pushing" other inserts to either side if necessary.',
+					order = index,
+					set = function(info,value)
+						self:Insert_ChangeIndex(macro, index, tonumber(value))
+						self:Options_BuildMacroOptions()
+					end,
+					get = function(info)
+						return tostring(index)
+					end,
+				},			
+				[('insert%sdelete'):format(index)] = {
+					name = 'Delete Insert',
+					type = 'execute',
+					func = function()
+						self:Insert_Delete(macro, index)
+						self:Options_BuildMacroOptions()
+					end,
+					order = index,
+				},				
+			},
+		}
+		self:Options_CreateInsertStatusOptions(objReturn['insertGroup'..index].args, macro, index)
+	end
+	return objReturn
+end
+
+function kMacro:Options_CreateInsertStatusOptions(addTable, macro, index)
+	local data = self:GetDataTable(kMacro:Insert_GetValue(macro, index))
+	if not data then return end
+	for i,v in pairs(data) do
+		local output = ('[INDEX:%s]\nCondition: %s\nInsertion: %s\nRaw Text: %s\nCurrent Status: %s\n'):format(i, v.readable or '', v.macro or '', v.raw or 'INVALID', tostring(self:ValidateCode(v.code)) or 'INVALID')
+		addTable[('insert%sstatus%s'):format(index, i)] = {
+			type = 'description',
+			name = output,
+			width = 'full',
+			order = index,
+			fontSize = 'medium',
+		}
+	end
+end

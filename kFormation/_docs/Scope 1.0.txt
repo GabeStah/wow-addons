@@ -1,0 +1,10 @@
+Goals:
+*Enable/Disable option
+*Track member locations in specific raid-zones
+*Top-down diagram interface to allow formation creation
+*POINT objects created and moved on diagram to create formation assignments.
+*POINT has various attributes: 
+ location (x,y)
+ static [bool] - determines if location changes or remains static
+ relative [bool] - determines if location changes relative to another POINT
+ 

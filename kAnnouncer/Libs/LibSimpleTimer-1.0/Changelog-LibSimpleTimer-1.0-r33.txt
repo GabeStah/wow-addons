@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r33 | nevcairiel | 2009-03-06 10:12:38 +0000 (Fri, 06 Mar 2009) | 1 line
+Changed paths:
+   M /trunk/LibSimpleTimer-1.0.toc
+
+Restore LoD to Libraries, as 3.0.8 fixed all bugs that blocked LoD OptionalDeps to load properly.
+------------------------------------------------------------------------
+r32 | Whitetooth | 2009-01-11 11:28:26 +0000 (Sun, 11 Jan 2009) | 1 line
+Changed paths:
+   M /trunk/LibSimpleTimer-1.0.lua
+
+- :IsTimerScheduled(name) returns nil instead of false if the timer is not scheduled
+------------------------------------------------------------------------

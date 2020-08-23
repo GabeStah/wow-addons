@@ -1,0 +1,26 @@
+﻿## Interface: 30000
+## Title: kRating
+## Notes: Displays arena team rating information after matches and various battleground functions.
+## Author: Kulldam
+## Version: 1.124
+## OptionalDeps: Ace2, DewdropLib, FuBarPlugin-2.0
+## X-Embeds: Ace2, DewdropLib, FuBarPlugin-2.0, FuBar
+## SavedVariables: kRatingDB
+## SavedVariablesPerCharacter: kRatingDBPC
+## X-Category: Interface Enhancements
+
+Libs\AceLibrary\AceLibrary.lua
+Libs\AceOO-2.0\AceOO-2.0.lua
+Libs\AceAddon-2.0\AceAddon-2.0.lua
+Libs\AceDB-2.0\AceDB-2.0.lua
+Libs\AceConsole-2.0\AceConsole-2.0.lua
+Libs\AceEvent-2.0\AceEvent-2.0.lua
+Libs\AceLocale-2.2\AceLocale-2.2.lua
+Libs\DewdropLib\DewdropLib.toc
+Libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua
+Libs\SpecialEvents-Aura-2.0\SpecialEvents-Aura-2.0.lua
+Libs\CandyBar\CandyBar.toc
+
+Locale-enUS.lua
+kRating.lua
+kRating.xml

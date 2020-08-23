@@ -1,0 +1,18 @@
+## Title: kReminder |cffb5a5d5[0.1.100]|r |cff7fff7fAce3|r 
+## Version: 0.1.100
+## Author: Kulldam
+## Notes: Reminding you the tedious tasks that are easy to forget.
+## Interface: 50400
+## SavedVariables: kReminderDB
+## Dependencies: kLib-1.0
+
+embeds.xml
+core.lua
+
+events.lua
+manual.lua
+options.lua
+raid.lua
+test.lua
+timer.lua
+view.lua

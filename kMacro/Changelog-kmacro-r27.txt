@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r27 | gabestah | 2014-10-14 03:14:04 +0000 (Tue, 14 Oct 2014) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+   M /trunk/Libs/Ace3/Ace3.toc
+   M /trunk/Libs/AceGUI-3.0-SharedMediaWidgets/AceGUI-3.0-SharedMediaWidgets.toc
+   M /trunk/Libs/AceGUI-3.0-SharedMediaWidgets/Libs/LibStub/LibStub.toc
+   M /trunk/Options.lua
+   M /trunk/kMacro.toc
+
+Fixed for patch 6.0.
+------------------------------------------------------------------------
+r26 | gabestah | 2012-10-02 08:33:18 +0000 (Tue, 02 Oct 2012) | 1 line
+Changed paths:
+   M /trunk/Insert.lua
+   M /trunk/Options.lua
+
+ADDED: Inserts can now be quickly re-ordered by changing the index or deleting.
+------------------------------------------------------------------------

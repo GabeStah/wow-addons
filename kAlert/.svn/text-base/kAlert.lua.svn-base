@@ -1,0 +1,138 @@
+-- Create Mixins
+MyAddon = LibStub("AceAddon-3.0"):NewAddon("MyAddon", "AceComm-3.0", "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0", "AceSerializer-3.0", "AceTimer-3.0")
+
+function MyAddon:OnInitialize()
+    -- Load Database
+    MyAddon.db = LibStub("AceDB-3.0"):New("MyAddonDB", MyAddon.defaults)
+    -- Inject Options Table and Slash Commands
+	MyAddon.options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(MyAddon.db)
+	MyAddon.config = LibStub("AceConfig-3.0"):RegisterOptionsTable("MyAddon", MyAddon.options, {"myaddon", "ma"})
+	MyAddon.dialog = LibStub("AceConfigDialog-3.0")
+	MyAddon.AceGUI = LibStub("AceGUI-3.0")
+	MyAddon.cb = LibStub:GetLibrary("CallbackHandler-1.0")
+	MyAddon.ae = LibStub("AceEvent-2.0")
+	MyAddon.oo = LibStub("AceOO-2.0")
+	MyAddon.sharedMedia = LibStub:GetLibrary("LibSharedMedia-3.0")
+	MyAddon:RegisterLibSharedMediaObjects();
+	-- Init Events
+	MyAddon:InitializeEvents()
+	-- Comm registry
+	MyAddon:RegisterComm("MyAddon")
+	-- Frames
+	MyAddon:Gui_InitializeFrames()
+end
+-- PURPOSE: Initialize the events to monitor and fire
+function MyAddon:InitializeEvents()
+	-- Add events here
+	-- e.g.: MyAddon:RegisterEvent("ZONE_CHANGED_NEW_AREA");
+end
+function MyAddon:SendCommunication(command, data)
+	MyAddon:SendCommMessage("MyAddon", MyAddon:Serialize(command, data), "RAID")
+end
+function MyAddon:OnCommReceived(prefix, serialObject, distribution, sender)
+	MyAddon:Debug("FUNC: OnCommReceived, FIRE", 3)
+	local success, command, data = MyAddon:Deserialize(serialObject)
+	if success then
+		if prefix == "MyAddon" and distribution == "RAID" then
+			if command == "SomeCommand" then
+				-- Add command
+			end
+		end
+	end
+end
+function MyAddon:Debug(msg, threshold)
+	if MyAddon.db.profile.debug.enabled then
+		if threshold == nil then
+			MyAddon:Print(ChatFrame1, "DEBUG: " .. msg)		
+		elseif threshold <= MyAddon.db.profile.debug.threshold then
+			MyAddon:Print(ChatFrame1, "DEBUG: " .. msg)		
+		end
+	end
+end
+function MyAddon:RegisterLibSharedMediaObjects()
+	-- Fonts
+	MyAddon.sharedMedia:Register("font", "Adventure",	[[Interface\AddOns\MyAddon\Fonts\Adventure.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Alba Super", [[Interface\AddOns\MyAddon\Fonts\albas.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Caslon Antique", [[Interface\AddOns\MyAddon\Fonts\CAS_ANTN.TTF]]);
+	MyAddon.sharedMedia:Register("font", "Caslon Antique", [[Interface\AddOns\MyAddon\Fonts\Cella.otf]]);
+	MyAddon.sharedMedia:Register("font", "Chick", [[Interface\AddOns\MyAddon\Fonts\chick.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Corleone",	[[Interface\AddOns\MyAddon\Fonts\Corleone.ttf]]);
+	MyAddon.sharedMedia:Register("font", "The Godfather",	[[Interface\AddOns\MyAddon\Fonts\CorleoneDue.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Forte",	[[Interface\AddOns\MyAddon\Fonts\Forte.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Freshbot", [[Interface\AddOns\MyAddon\Fonts\freshbot.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Jokewood", [[Interface\AddOns\MyAddon\Fonts\jokewood.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Sopranos",	[[Interface\AddOns\MyAddon\Fonts\Mobsters.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Weltron Urban", [[Interface\AddOns\MyAddon\Fonts\weltu.ttf]]);
+	MyAddon.sharedMedia:Register("font", "Wild Ride", [[Interface\AddOns\MyAddon\Fonts\WildRide.ttf]]);
+	-- Sounds
+	MyAddon.sharedMedia:Register("sound", "Alarm", [[Interface\AddOns\MyAddon\Sounds\alarm.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Alert", [[Interface\AddOns\MyAddon\Sounds\alert.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Info", [[Interface\AddOns\MyAddon\Sounds\info.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Long", [[Interface\AddOns\MyAddon\Sounds\long.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Shot", [[Interface\AddOns\MyAddon\Sounds\shot.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Sonar", [[Interface\AddOns\MyAddon\Sounds\sonar.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Victory", [[Interface\AddOns\MyAddon\Sounds\victory.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Victory Classic", [[Interface\AddOns\MyAddon\Sounds\victoryClassic.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Victory Long", [[Interface\AddOns\MyAddon\Sounds\victoryLong.mp3]]);
+	MyAddon.sharedMedia:Register("sound", "Wilhelm", [[Interface\AddOns\MyAddon\Sounds\wilhelm.mp3]]);
+	-- Sounds, Worms
+	MyAddon.sharedMedia:Register("sound", "Worms - Angry Scot Come On Then", [[Interface\AddOns\MyAddon\Sounds\wangryscotscomeonthen.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Angry Scot Coward", [[Interface\AddOns\MyAddon\Sounds\wangryscotscoward.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Angry Scot I'll Get You", [[Interface\AddOns\MyAddon\Sounds\wangryscotsillgetyou.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Sargeant Fire", [[Interface\AddOns\MyAddon\Sounds\wdrillsargeantfire.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Sargeant Stupid", [[Interface\AddOns\MyAddon\Sounds\wdrillsargeantstupid.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Sargeant Watch This", [[Interface\AddOns\MyAddon\Sounds\wdrillsargeantwatchthis.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Grandpa Coward", [[Interface\AddOns\MyAddon\Sounds\wgrandpacoward.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Grandpa Uh Oh", [[Interface\AddOns\MyAddon\Sounds\wgrandpauhoh.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - I'll Get You", [[Interface\AddOns\MyAddon\Sounds\willgetyou.wav]]);
+	MyAddon.sharedMedia:Register("sound", "Worms - Uh Oh", [[Interface\AddOns\MyAddon\Sounds\wuhoh.wav]]);
+	-- Drum
+	MyAddon.sharedMedia:Register("sound", "Snare1", [[Interface\AddOns\MyAddon\Sounds\snare1.mp3]]);
+end
+function MyAddon:RGBToHex(r, g, b)
+	r = r <= 255 and r >= 0 and r or 0
+	g = g <= 255 and g >= 0 and g or 0
+	b = b <= 255 and b >= 0 and b or 0
+	return string.format("%02x%02x%02x", r, g, b)
+end
+function MyAddon:ColorizeSubstringInString(subject, substring, r, g, b)
+	local t = {};
+	for i = 1, strlen(subject) do
+		local iStart, iEnd = string.find(strlower(subject), strlower(substring), i, strlen(substring) + i - 1)
+		if iStart and iEnd then
+			for iTrue = iStart, iEnd do
+				t[iTrue] = true;
+			end
+		else
+			if not t[i] then
+				t[i] = false;
+			end
+		end
+	end
+	local sOut = '';
+	local sColor = MyAddon:RGBToHex(r*255,g*255,b*255);
+	for i = 1, strlen(subject) do
+		if t[i] == true then
+			sOut = sOut .. "|cFF"..sColor..strsub(subject, i, i).."|r";
+		else
+			sOut = sOut .. strsub(subject, i, i);
+		end
+	end
+	if strlen(sOut) > 0 then
+		return sOut;
+	else
+		return nil;
+	end
+end
+function MyAddon:SplitString(subject, delimiter)
+	local result = { }
+	local from  = 1
+	local delim_from, delim_to = string.find( subject, delimiter, from  )
+	while delim_from do
+		table.insert( result, string.sub( subject, from , delim_from-1 ) )
+		from  = delim_to + 1
+		delim_from, delim_to = string.find( subject, delimiter, from  )
+	end
+	table.insert( result, string.sub( subject, from  ) )
+	return result
+end

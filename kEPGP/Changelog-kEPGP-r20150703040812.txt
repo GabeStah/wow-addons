@@ -1,0 +1,26 @@
+gabestah:
+	- Refactoring to CharacterName-RealmName format throughout addon, to support recent changes to EPGP
+	- Updated to latest kLib
+	- Updated to latest kLib
+	- Bumped .toc and interace version for 6.2
+	- Updated for distribution on curseforge with .pkgmeta
+Gabe Wyatt:
+	- Added rank-based EP/GP reset capability on raid start.
+	- Removed alternate characters from scanning to potentially prevent script ran too long errors.
+	- Changed roster/EP process event from `GuildRosterUpdate` to more reliable 30-second refresh.
+	- Added test module.
+	Fixed output message formatting issue (commas added).
+	Fixed incorrect attribution for EP rewards in output message.
+	- Added initial callback code for GPAward and EPAward events.
+	To test:
+	/dump kEPGP.outputs.gp
+	/dump kEPGP.outputs.ep
+	- Added output mass message format (closes #1)
+	- Added :Output method.
+	Added output messages for basic raid commands (closes #2)
+	- Fixed math.round error
+	- Changed options.ep.punctualCutoffPeriod from 15 to 30 seconds.
+	- Added revert command to /kep raid.
+	- Fixes the IncEPBy.reason format.
+	- Public Beta release
+	- Initial commit

@@ -1,0 +1,348 @@
+-- Author      : Gabe
+-- Create Date : 2/15/2009 7:20:42 PM
+kMacro.minRequiredVersion = '0.0.100';
+kMacro.version = '0.0.100';
+kMacro.versions = {};
+
+kMacro.defaults = {
+	profile = {
+		debug = {
+			enabled = false,
+			threshold = 1,
+		},
+		macros = {
+			enabled = false,
+			list = {
+				
+			},
+			temp = {},
+		},
+	},
+};
+kMacro.timers = {};
+kMacro.threading = {};
+kMacro.threading.timers = {};
+kMacro.threading.timerPool = {};
+-- Create Options Table
+kMacro.options = {
+    name = "kMacro",
+    handler = kMacro,
+    type = 'group',
+    args = {
+		description = {
+			name = '',
+			type = 'description',
+			order = 0,
+			hidden = true,
+		},	
+		debug = {
+			name = 'Debug',
+			type = 'group',
+			args = {
+				enabled = {
+					name = 'Enabled',
+					type = 'toggle',
+					desc = 'Toggle Debug mode',
+					set = function(info,value) kMacro.db.profile.debug.enabled = value end,
+					get = function(info) return kMacro.db.profile.debug.enabled end,
+				},
+				threshold = {
+					name = 'Threshold',
+					desc = 'Description for Debug Threshold',
+					type = 'select',
+					values = {
+						[1] = 'Low',
+						[2] = 'Normal',
+						[3] = 'High',
+					},
+					style = 'dropdown',
+					set = function(info,value) kMacro.db.profile.debug.threshold = value end,
+					get = function(info) return kMacro.db.profile.debug.threshold end,
+				},
+			},
+			cmdHidden = true,
+		},
+        config = {
+			type = 'execute',
+			name = 'Config',
+			desc = 'Open the Configuration Interface',
+			func = function() 
+				kMacro.dialog:Open("kMacro") 
+			end,
+			guiHidden = true,
+        },    
+		setup = {
+			type = 'execute',
+			name = 'Setup',
+			desc = 'Open the Setup Interface',
+			func = function() 
+				kMacro:Gui_InitializeFrames();
+			end,
+			guiHidden = true,
+        },
+        version = {
+			type = 'execute',
+			name = 'Version',
+			desc = 'Check your kMacro version',
+			func = function() 
+				kMacro:Print("Version: |cFF"..kMacro:RGBToHex(0,255,0)..kMacro.version.."|r");
+			end,
+			guiHidden = true,
+        },
+		macros = {
+			name = 'Macros',
+			type = 'group',
+			cmdHidden = true,
+			args = {
+				macrosetup = {
+					name = 'Macro Setup',
+					type = 'group',
+					cmdHidden = true,
+					order = 10,
+					args = {
+						inline = {
+							name = 'Add New',
+							type = 'group',
+							guiInline = true,
+							order = 1,
+							args = {
+								name = {
+									name = 'Name',
+									type = 'input',
+									order = 2,
+									set = function(info,value) 
+										kMacro.db.profile.macros.temp.name = value;
+									end,
+									get = function(info)
+										return kMacro.db.profile.macros.temp.name;
+									end,
+								},
+								isGeneral = {
+									name = 'General Macro',
+									type = 'toggle',
+									set = function(info,value) 
+										kMacro.db.profile.macros.temp.isGeneral = value;
+									end,
+									get = function(info)
+										return kMacro.db.profile.macros.temp.isGeneral;
+									end,
+								},
+								add = {
+									name = 'Add Macro',
+									type = 'execute',
+									order = 2,
+									func = function()
+										-- Add new macro
+										kMacro:AddMacro(kMacro.db.profile.macros.temp.name, kMacro.db.profile.macros.temp.isGeneral)
+										kMacro:Options_BuildMacroOptions();
+									end,
+								},
+							},
+						},						
+					},
+				},
+			},
+		},
+	},
+};
+function kMacro:Options_BuildMacroOptions()
+	for iMacro,vMacro in pairs(self.db.profile.macros.list) do
+		self.options.args.macros.args.macrosetup.args[vMacro.name..vMacro.id] = {
+			name = vMacro.name,
+			type = 'group',
+			guiInline = true,
+			order = iMacro + 1,
+			args = {
+				name = {
+					name = 'Name',
+					type = 'input',
+					order = 1,
+					set = function(info,value) 
+						self.db.profile.macros.list[iMacro].name = value;
+					end,
+					get = function(info)
+						return self.db.profile.macros.list[iMacro].name;
+					end,
+				},
+				isGeneral = {
+					name = 'General Macro',
+					type = 'toggle',
+					order = 2,
+					set = function(info,value) 
+						self.db.profile.macros.list[iMacro].isGeneral = value;
+					end,
+					get = function(info)
+						return self.db.profile.macros.list[iMacro].isGeneral;
+					end,
+				},
+				activation = {
+					name = 'Activation',
+					type = 'input',
+					multiline = true,
+					order = 3,
+					width = 'full',
+					set = function(info,value) 
+						local verification = kMacro:VerifyMacroActivation(value);
+						if verification == true then
+							self.db.profile.macros.list[iMacro].activation = value;
+						elseif verification == false then
+							self.db.profile.macros.list[iMacro].activation = value;
+						elseif verification then
+							self:Print('kMacro Invalid Activation Code: ' .. verification)
+						end
+					end,
+					get = function(info)
+						return self.db.profile.macros.list[iMacro].activation;
+					end,
+				},
+				activationLabel = {
+					type = 'description',
+					name = function()
+						local verification = kMacro:VerifyMacroActivation(self.db.profile.macros.list[iMacro].activation);
+						if verification == true then
+							return 'Activiatin: True'
+						elseif verification == false then
+							return 'Activiatin: False'
+						elseif verification then
+							return 'Activiatin: Invalid'
+						end
+					end,
+					width = 'full',
+					order = 4,
+				},
+				body = {
+					name = 'Body',
+					type = 'input',
+					multiline = true,
+					width = 'full',
+					order = 5,
+					set = function(info,value)
+						local len = strlen(value)
+						if len <=255 then
+							self.db.profile.macros.list[iMacro].body = value;
+						else
+							self:Print('Macro length exceeds 255; shorten and try again.')
+						end
+					end,
+					get = function(info)
+						return self.db.profile.macros.list[iMacro].body;
+					end,
+				},
+				bodyLabel = {
+					type = 'description',
+					name = function()
+						local len = strlen(self.db.profile.macros.list[iMacro].body);
+						if len <= 255 then
+							return ('Body Length Good (%s)'):format(len)
+						elseif len > 255 then
+							return ('Body Length Bad (%s)'):format(len)
+						end
+					end,
+					width = 'full',
+					order = 6,
+				},
+				save = {
+					name = 'Save',
+					type = 'execute',
+					func = function()
+						kMacro:SaveMacro(self.db.profile.macros.list[iMacro].id);
+					end,
+					order = 7,
+				},
+				delete = {
+					name = 'Delete',
+					type = 'execute',
+					func = function()
+						kMacro:DeleteMacro(self.db.profile.macros.list[iMacro].id);
+					end,
+					order = 8,
+				},
+			},
+		}
+	end
+end
+function kMacro:Options_CreateCustomOptions()
+	local tempTable = {
+		name = 'Macro Setup',
+		type = 'group',
+		cmdHidden = true,
+		args = {
+			inline = {
+				name = 'Purpose',
+				type = 'group',
+				guiInline = true,
+				order = 1,
+				args = {
+					addName = {
+						name = 'INSERT STUFF ABOUT MACRO SETUP.',
+						type = 'description',
+						order = 1,
+						width = 'full',
+					},
+				},
+			},						
+		},
+	}
+	local id, name, description, icon, background, role
+	-- Loop specs	
+	for indexSpec=1,GetNumSpecializations() do
+		id, name, description, icon, background, role = GetSpecializationInfo(indexSpec)
+		kMacro:Debug(GetSpecializationInfo(indexSpec))
+		self.options.args.macros.args[name] = {
+			name = name,
+			type = 'group',
+			cmdHidden = true,
+			icon = icon,
+			order = indexSpec,
+			args = {
+				inline = {
+					name = 'Purpose',
+					type = 'group',
+					guiInline = true,
+					order = 1,
+					args = {
+						addName = {
+							name = 'INSERT STUFF ABOUT MACRO SETUP.',
+							type = 'description',
+							order = 1,
+							width = 'full',
+						},
+						name = {
+							name = 'Name',
+							type = 'input',
+							order = 2,
+							set = function(info,value) 
+								kMacro.db.profile.macros.temp.name = value;
+							end,
+							get = function(info)
+								return kMacro.db.profile.macros.temp.name;
+							end,
+						},
+						isGeneral = {
+							name = 'General Macro',
+							type = 'toggle',
+							set = function(info,value) 
+								kMacro.db.profile.macros.temp.isGeneral = value;
+							end,
+							get = function(info)
+								return kMacro.db.profile.macros.temp.isGeneral;
+							end,
+						},
+						add = {
+							name = 'Add Macro',
+							type = 'execute',
+							order = 2,
+							func = function()
+								-- Add new macro
+								kMacro:AddMacro(kMacro.db.profile.macros.temp.name, kMacro.db.profile.macros.temp.isGeneral)
+								kMacro:Options_BuildMacroOptions();
+							end,
+						},
+					},
+				},						
+			},
+		};
+	end
+	kMacro:Options_BuildMacroOptions();
+end
+

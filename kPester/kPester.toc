@@ -1,0 +1,11 @@
+## Title: kPester |cffb5a5d5[r5]|r |cff7fff7fAce3|r 
+## Version: 0.0005
+## Author: Kulldam
+## Notes: Huggeybears are gummy.
+## Interface: 40300
+## SavedVariables: kPesterDB
+
+embeds.xml
+kPester.lua
+kPester_Options.lua
+kPester_Threading.lua

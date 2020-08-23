@@ -1,0 +1,12 @@
+## Title: kInsane |cffb5a5d5[1]|r |cff7fff7fAce3|r 
+## Version: 0.0001
+## Author: Kulldam
+## Notes: kInsane is an assistance mod for players working for the Insane in the Membrane achievement.
+## Interface: 40300
+## SavedVariables: kInsaneDB
+
+embeds.xml
+kInsane.lua
+kInsane_Gui.lua
+kInsane_Options.lua
+kInsane_Threading.lua

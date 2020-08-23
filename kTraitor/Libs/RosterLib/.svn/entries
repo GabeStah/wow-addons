@@ -1,0 +1,44 @@
+9
+
+dir
+30
+svn://gabestah@svn.curseforge.net/wow/kauction/mainline/trunk/Libs/RosterLib
+svn://gabestah@svn.curseforge.net/wow/kauction/mainline
+
+
+
+2009-09-07T00:38:36.850545Z
+30
+gabestah
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+AceOO-2.0
+dir
+
+AceEvent-2.0
+dir
+
+Roster-2.1
+dir
+

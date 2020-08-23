@@ -1,0 +1,201 @@
+-- Create Mixins
+local _G = _G
+
+local kMacro = LibStub("AceAddon-3.0"):NewAddon("kMacro", "AceComm-3.0", "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0", "AceSerializer-3.0", "AceTimer-3.0")
+_G.kMacro = kMacro
+kMacro.gui = {};
+kMacro.gui.frames = {};
+function kMacro:OnEnable() end
+function kMacro:OnDisable() end
+function kMacro:OnInitialize()
+    -- Load Database
+    self.db = LibStub("AceDB-3.0"):New("kMacroDB", self.defaults)
+    -- Inject Options Table and Slash Commands
+	-- Create options	
+	self.options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
+	self.config = LibStub("AceConfig-3.0"):RegisterOptionsTable("kMacro", self.options, {"kmacro", "kmac"})
+	self.dialog = LibStub("AceConfigDialog-3.0")
+	self.AceGUI = LibStub("AceGUI-3.0")
+	-- Init Events
+	self:InitializeEvents()
+	self.updateFrame = CreateFrame("Frame", "kMacroUpdateFrame", UIParent);
+	kMacroUpdateFrame:SetScript("OnUpdate", function(frame,elapsed) kMacro:OnUpdate(1, elapsed) end)
+end
+
+function kMacro:InitializeEvents()
+	--kMacro:RegisterEvent("CHAT_MSG_WHISPER");
+	kMacro:Options_CreateCustomOptions();
+	-- Update
+	-- Color Hex codes
+	kMacro.colorHex = {};
+	kMacro.colorHex['green'] = kMacro:RGBToHex(0,255,0);
+	kMacro.colorHex['red'] = kMacro:RGBToHex(255,0,0);
+	kMacro.colorHex['yellow'] = kMacro:RGBToHex(255,255,0);
+	kMacro.colorHex['white'] = kMacro:RGBToHex(255,255,255,1);
+	kMacro.colorHex['grey'] = kMacro:RGBToHex(128,128,128);
+	kMacro.colorHex['orange'] = kMacro:RGBToHex(255,165,0);
+	kMacro.colorHex['gold'] = kMacro:RGBToHex(175,150,0);
+	kMacro.colorHex['test'] = kMacro:RGBToHex(100,255,0);
+end
+
+function kMacro:Gui_InitializeFrames()
+	-- Main frame
+	self.gui.frames.config = self.AceGUI:Create("Frame")
+	self.gui.frames.config:SetCallback("OnClose",function(widget,event) self.AceGUI:Release(widget) end);
+	self.gui.frames.config:SetTitle("kMacro Config")
+	self.gui.frames.config:SetLayout("Fill")
+	self.gui.frames.config:SetWidth(900);	
+	-- Refresh
+	kMacro:Gui_RedrawMainFrame()
+end
+function kMacro:Gui_RedrawMainFrame(initialLoad)
+	self.gui.frames.config:ReleaseChildren();
+	self.gui.frames.config.tree = kMacro:Gui_CreateWidget_MacroTree(self.gui.frames.config);
+	self.gui.frames.config:AddChild(self.gui.frames.config.tree);
+	self.gui.frames.config:Show()
+end
+function kMacro:Gui_CreateWidget_MacroTree()
+	--local list = kMacro:Wishlist_GetLists();
+	local list = {
+		{name = '1',id=1},
+		{name = '2',id=2},
+		{name = '3',id=3},   
+	}
+	local tree = {};
+	tinsert(tree, {icon = 'trade_engineering', text = 'Setup', value = 'setup'})
+	for i,v in pairs(list) do
+		tinsert(tree, {icon = v.icon, text = v.name, value = v.id,
+			children = {
+				{
+					text = 'Delete',
+					value = '_delete_' .. v.id,
+				},
+				{
+					text = 'Rename',
+					value = '_rename_' .. v.id,
+				},
+				{
+					text = 'Add Item Manually',
+					value = '_addmanual_' .. v.id,
+				},
+			},});
+	end
+	tinsert(tree, {icon = 'inv_misc_questionmark', text = 'Debug', value = 'debug'})
+	local frame = self.AceGUI:Create("TreeGroup")
+	frame:SetCallback('OnGroupSelected', function(widget,event,value,d,e)
+		local s1, s2, s3 = strsplit('_', value);
+		kMacro:Debug('selected:'..s2)
+		if s2 == 'delete' then
+
+		elseif s2 == 'rename' then
+
+		elseif s2 == 'addmanual' then
+		end
+		if s3 then
+			kMacro:Debug('s3:'..s3)
+		end
+	end);
+	frame:SetLayout("Fill")
+	frame:SetTree(tree)	
+	return frame;
+end
+
+
+
+
+
+function kMacro:AddMacro(name, isGeneral)
+	local lowIndex = isGeneral and 1 or 37;
+	local highIndex = isGeneral and 36 or 54;
+	local currentName, currentTexture, currentBody;
+	local matchFound = false;
+	-- Check if macro exists with name in appropriate location
+	for iMacro=lowIndex,highIndex do
+		currentName, currentTexture, currentBody = GetMacroInfo(iMacro)
+		kMacro:Debug(currentName)
+		if name == currentName then 
+			matchFound = iMacro
+			break
+		end
+	end
+	if not matchFound then 
+		print('No matching macro exists to overwrite');
+		return
+	end
+	local macro = {
+		activation = '',
+		body = currentBody,
+		id = kMacro:GetUniqueMacroId(),
+		isGeneral = isGeneral,
+		name = name,		
+	}	
+	tinsert(self.db.profile.macros.list, macro);
+end
+function kMacro:DeleteMacro(id)
+	-- Check not in combat
+	if InCombatLockdown() then return end
+	for i,v in pairs(self.db.profile.macros.list) do
+		-- find match
+		if v.id == id then
+			kMacro:Debug('delete:'..v.id)
+			self.db.profile.macros.list[i] = nil;
+		end
+	end
+end
+function kMacro:GetUniqueMacroId()
+	local newId
+	local isValidId = false;
+	while isValidId == false do
+		matchFound = false;
+		newId = (math.random(0,2147483647) * -1);
+		for i,val in pairs(self.db.profile.macros.list) do
+			if val.id == newId then
+				matchFound = true;
+			end
+		end
+		if matchFound == false then
+			isValidId = true;
+		end
+	end
+	return newId;
+end
+function kMacro:SaveMacro(id)
+	-- Check not in combat
+	if InCombatLockdown() then return end
+	for i,v in pairs(self.db.profile.macros.list) do
+		-- find match
+		if v.id == id then
+			kMacro:Debug(v.id)
+			-- Verify activation
+			if v.activation and kMacro:VerifyMacroActivation(v.activation) == true then
+				-- Check that macro matches in system
+				local lowIndex = v.isGeneral and 1 or 37;
+				local highIndex = v.isGeneral and 36 or 54;
+				local currentName, currentTexture, currentBody;
+				local matchIndex = false;
+				-- Check if macro exists with name in appropriate location
+				for iMacro=lowIndex,highIndex do
+					currentName, currentTexture, currentBody = GetMacroInfo(iMacro)
+					if v.name == currentName then 
+						matchIndex = iMacro
+						kMacro:Debug(matchIndex)											
+						break
+					end
+				end
+				if matchIndex then 
+					EditMacro(matchIndex, nil, nil, v.body)
+					return true;
+				end
+			end
+		end
+	end
+end
+function kMacro:VerifyMacroActivation(code)
+	local loadedFunction, errorString = loadstring('return '..tostring(code))
+	if errorString then
+		return errorString
+	else
+		local func = assert(loadedFunction)()
+		return func;
+	end
+end

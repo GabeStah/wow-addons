@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/kAlert/!svn/ver/1/Libs/Ace3/AceComm-3.0
+END
+AceComm-3.0.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/kAlert/!svn/ver/1/Libs/Ace3/AceComm-3.0/AceComm-3.0.xml
+END
+AceComm-3.0.lua
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/kAlert/!svn/ver/3/Libs/Ace3/AceComm-3.0/AceComm-3.0.lua
+END
+ChatThrottleLib.lua
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/kAlert/!svn/ver/1/Libs/Ace3/AceComm-3.0/ChatThrottleLib.lua
+END

@@ -1,0 +1,138 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">	
+	<Frame name="kAuctionAuctionItemWidget" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension y="24" />
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parentItemNameText" font="Fonts\FRIZQT__.TTF" text="Lorem ipsum dolor sit">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="9" />
+					</FontHeight>
+					<Color r="0.9" g="0.82" b="0" />
+				</FontString>
+			</Layer>
+			<Layer level="HIGHLIGHT">
+				<Texture inherits="kAuctionHighlightTextureTemplate"/>
+			</Layer>
+		</Layers>
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+				<Offset>
+					<AbsDimension x="5" y="0" />
+				</Offset>
+			</Anchor>
+			<Anchor point="RIGHT" relativeTo="$parent" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="-22" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentCurrentItem" inherits="kAuctionIconTemplate" id="1">	
+				<Anchors>
+					<Anchor point="LEFT" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						kAuction:Gui_OnClickCurrentItemIcon(self);
+					</OnClick>
+					<OnEnter>
+						kAuction:Gui_OnEnterCurrentItemIcon(self);
+					</OnEnter>
+					<OnLeave>
+						local tip = kAuction.qTip:Acquire("GameTooltip");
+						tip:Hide();						
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>						
+			<Button name="$parentClose" inherits="kAuctionTextIconTemplate">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\kAuction\Images\Textures\xdark" />
+				<HighlightTexture file="Interface\AddOns\kAuction\Images\Textures\x" />
+				<Scripts>
+					<OnEnter>
+						kAuction:Gui_OnEnterCloseIcon(self)
+					</OnEnter>
+					<OnClick>
+						kAuction:Gui_OnClickCloseIcon(self)
+					</OnClick>	
+				</Scripts>					
+			</Button>
+			<Button name="$parentStatusIcon" inherits="kAuctionTextIconTemplate" id="1">		
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentClose" relativePoint="LEFT" />
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\kAuction\Images\Textures\clock" />
+				<Layers>				
+					<Layer level="TOOLTIP">
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="15" justifyH="CENTER" justifyV="MIDDLE" toplevel="true">
+								<Color r="0.05" g="0.4" b="0.05" a="1"/>
+								<FontHeight val="16"/>
+								<Anchors>
+									<Anchor point="TOP" relativeTo="$parent" x="0" y="-1" />
+									<Anchor point="BOTTOM" relativeTo="$parent" x="0" y="0" />
+								</Anchors>
+								<Shadow>
+							    <Offset x="1" y="1" />
+							    <Color r="0" g="0" b="0"/>
+						 	</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>			
+				<Scripts>
+					<OnEnter>
+						kAuction:Gui_OnEnterStatusIcon(self)
+					</OnEnter>	
+				</Scripts>	
+			</Button>	
+			<Button name="$parentBidIcon" inherits="kAuctionTextIconTemplate" id="1">					
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentStatusIcon" relativePoint="LEFT" />
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\kAuction\Images\Textures\user-mystery" />
+				<Scripts>
+					<OnEnter>
+						kAuction:Gui_OnEnterBidIcon(self)
+					</OnEnter>	
+				</Scripts>					
+			</Button>						
+			<Button name="$parentVoteIcon" inherits="kAuctionTextIconTemplate" id="1">		
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentBidIcon" relativePoint="LEFT" />
+				</Anchors>
+				<NormalTexture file="Interface\AddOns\kAuction\Images\Textures\exclaim" />
+				<Scripts>
+					<OnEnter>
+						kAuction:Gui_OnEnterVoteIcon(self)
+					</OnEnter>	
+				</Scripts>					
+			</Button>				
+		</Frames>
+		<Scripts>
+			<OnMouseDown>
+				kAuction:Gui_OnClickAuctionItem(self, button)
+			</OnMouseDown>
+			<OnEnter>
+				kAuction:Gui_OnEnterAuctionItem(self)
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Frame>
+</Ui>

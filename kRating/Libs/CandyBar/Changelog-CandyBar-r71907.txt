@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r71907 | ammo | 2008-04-28 04:21:26 -0400 (Mon, 28 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/CandyBar/CandyBar-2.0/CandyBar-2.0.lua
+
+CandyBar: undo r71235, causes more harm than good, next time please ask before fucking up my lib
+------------------------------------------------------------------------
+r71235 | schelli | 2008-04-24 07:30:50 -0400 (Thu, 24 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/CandyBar/CandyBar-2.0/CandyBar-2.0.lua
+
+CandyBar: fixed problem where when candybar was stopped and paused at same time when usind start again caused error (bar not destroyed but reached 0), now will restart bar
+------------------------------------------------------------------------

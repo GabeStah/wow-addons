@@ -1,0 +1,15 @@
+## Title: kRadius
+## Version: 1.0
+## Author: Kulldam
+## Notes: Radius test addon.
+## Interface: 30000
+## SavedVariables: kRadiusDB
+
+--embeds.xml
+kRadius.lua
+--kRadius_Client.lua
+--kRadius_Gui.lua
+--kRadius_Item.lua
+--kRadius_Options.lua
+--kRadius_Server.lua
+--kRadius_Threading.lua

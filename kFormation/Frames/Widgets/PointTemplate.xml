@@ -1,0 +1,28 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Texture name="kFormationPointIconTextureTemplate" file="Interface\AddOns\kFormation\Images\Icons\marker" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" />
+			<Anchor point="BOTTOMRIGHT" />
+		</Anchors>
+	</Texture>
+	<Frame name="kFormationPointTemplate" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture inherits="kFormationPointIconTextureTemplate"/>
+			</Layer>
+		</Layers>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+</Ui>

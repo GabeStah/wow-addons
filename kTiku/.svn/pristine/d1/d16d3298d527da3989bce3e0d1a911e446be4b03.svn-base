@@ -1,0 +1,11 @@
+## Title: kTiku |cffb5a5d5[1]|r |cff7fff7fAce3|r 
+## Version: 0.0001
+## Author: Kulldam
+## Notes: kTiku Description
+## Interface: 40300
+## SavedVariables: kTikuDB
+
+embeds.xml
+core.lua
+options\core.lua
+gui\core.lua

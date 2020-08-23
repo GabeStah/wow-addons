@@ -1,0 +1,14 @@
+## Title: kSwap
+## Version: 1.2.5
+## Author: Kulldam
+## Notes: Broker display to change specialization (and equivalently named equipment set).
+## Interface: 70300
+## SavedVariables: kSwapDB
+## X-Curse-Packaged-Version: v1.2.5
+## X-Curse-Project-Name: kSwap
+## X-Curse-Project-ID: kswap
+## X-Curse-Repository-ID: wow/kswap/mainline
+
+embeds.xml
+
+core.lua

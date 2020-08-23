@@ -1,0 +1,9 @@
+## Interface: 40300
+## Title: kAutoQuest |cffb5a5d5[1.032]|r
+## Author: Kulldam
+## Notes: Auto-accepts quests and singular-rewards, shift to suppress.
+## Version: 1.032
+## SavedVariables: kAutoQuestDB
+
+embeds.xml
+kAutoQuest.lua

@@ -1,0 +1,44 @@
+9
+
+dir
+2
+svn://gabestah@svn.curseforge.net/wow/kauction/mainline/trunk/Libs/CandyBar/Libs
+svn://gabestah@svn.curseforge.net/wow/kauction/mainline
+
+
+
+2009-02-20T04:06:57.621129Z
+2
+gabestah
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+PaintChips-2.0
+dir
+
+AceOO-2.0
+dir
+
+AceLibrary
+dir
+

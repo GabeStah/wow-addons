@@ -1,0 +1,43 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>kPester</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d932f9ab-b4a9-418a-b32f-b5b35807c41e}</ProjectGuid>
+    <AssemblyName>kPester</AssemblyName>
+    <RootNamespace>kPester</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="embeds.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="kPester.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kPester.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="kPester_Options.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kPester_Threading.lua">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\2.0\WowAddonStudio.targets" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>

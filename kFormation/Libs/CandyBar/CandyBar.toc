@@ -1,0 +1,19 @@
+﻿## Interface: 30000
+## LoadOnDemand: 1
+## X-Curse-Packaged-Version: r155-release
+## X-Curse-Project-Name: CandyBar
+## X-Curse-Project-ID: project-13613
+## X-Curse-Repository-ID: wow/project-13613/mainline
+
+## Title: Lib: CandyBar
+## Notes: Timerbar embeddable library
+## Author: Ammo
+## X-ReleaseDate: "$Date: 2008-10-19 12:02:43 +0000 (Sun, 19 Oct 2008) $"
+## X-Category: Library
+## X-AceLibrary-CandyBar-2.0: true
+
+## OptionalDeps: Ace2, PaintChipsLib
+
+embeds.xml
+
+CandyBar-2.0\CandyBar-2.0.lua

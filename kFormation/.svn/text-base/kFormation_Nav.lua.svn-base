@@ -1,0 +1,44 @@
+﻿--[[ Nav_GetEffectiveCursorPosition
+PURPOSE: Obtain the current cursor position coordinates based on the UIParent:EffectiveScale value
+ARGS:	
+RETURN:	x [number] - X coordinate of cursor position
+		y [number] - Y coordinate of cursor position
+]]
+function kFormation:Nav_GetEffectiveCursorPosition()
+	local x, y = GetCursorPosition();
+	x = x / UIParent:GetEffectiveScale();
+	y = y / UIParent:GetEffectiveScale();
+	return x, y;
+end
+--[[ Nav_GetMapCoordinatesAtCursor
+PURPOSE: Get the x,y coordinates for map frame at given cursor location
+ARGS:	mapFrame [frame] - [Optional] Map frame with which to check for coordinates
+RETURN:	x [number] - X coordinate of cursor position
+		y [number] - Y coordinate of cursor position
+]]
+function kFormation:Nav_GetMapCoordinatesAtCursor(mapFrame)
+	local xCursor, yCursor = kFormation:Nav_GetEffectiveCursorPosition();
+	local fMap = getglobal(kFormation.const.gui.frames.mapName);
+	if mapFrame then
+		fMap = mapFrame;
+	end
+	local x = ((xCursor - fMap:GetLeft()) / fMap:GetWidth());
+	local y = ((fMap:GetTop() - yCursor) / fMap:GetHeight());
+	return x, y;
+end
+--[[ Nav_GetMapEffectivePositionAtCursor
+PURPOSE: Get the x,y position for map frame at given cursor location
+ARGS:	mapFrame [frame] - [Optional] Map frame with which to check for position
+RETURN:	x [number] - X position
+		y [number] - Y position
+]]
+function kFormation:Nav_GetMapEffectivePositionAtCursor(mapFrame)
+	local xCursor, yCursor = kFormation:Nav_GetEffectiveCursorPosition();
+	local fMap = getglobal(kFormation.const.gui.frames.mapName);
+	if mapFrame then
+		fMap = mapFrame;
+	end
+	local x = xCursor - fMap:GetLeft();
+	local y = fMap:GetTop() - yCursor;
+	return x, y;
+end

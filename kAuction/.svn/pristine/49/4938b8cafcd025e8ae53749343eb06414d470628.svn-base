@@ -1,0 +1,78 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">	
+	<Frame name="kAuctionItemsWonWidget" virtual="true" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension y="32" />
+		</Size>
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+				<Offset>
+					<AbsDimension x="2" y="0" />
+				</Offset>
+			</Anchor>
+			<Anchor point="RIGHT" relativeTo="$parent" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="-22" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>			
+			<Button name="$parentItem" inherits="kAuctionTextIconTemplate">	
+				<Anchors>
+					<Anchor point="LEFT" />
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						self:SetSize(kAuction.itemsWonWidgetHeight, kAuction.itemsWonWidgetHeight)
+					</OnShow>
+					<OnEnter>
+						kAuction:Gui_OnEnterItemsWonItemGraphic(self);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>														
+		</Frames>
+		<Layers>
+			<Layer level="NORMAL">
+				<FontString name="$parentItemNameText" font="Fonts\FRIZQT__.TTF" text="Lorem ipsum dolor sit" justifyh="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentItem" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="2"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-2"/>
+							</Offset>
+						</Anchor>						
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="9" />
+					</FontHeight>
+					<Color r="0.9" g="0.82" b="0" />
+				</FontString>				
+				<Scripts>
+					<OnEnter>
+						kAuction:Gui_OnEnterItemsWonItemNameText(self)
+					</OnEnter>
+				</Scripts>
+			</Layer>
+			<Layer level="HIGHLIGHT">
+				<Texture inherits="kAuctionHighlightTextureTemplate"/>
+			</Layer>
+		</Layers>		
+		<Scripts>
+			<OnShow>
+				self:SetHeight(kAuction.itemsWonWidgetHeight)
+			</OnShow>
+			<OnEnter>
+				kAuction:Gui_OnEnterItemsWonItem(self);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Frame>
+</Ui>

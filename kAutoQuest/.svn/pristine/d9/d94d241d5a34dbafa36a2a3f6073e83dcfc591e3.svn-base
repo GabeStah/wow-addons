@@ -1,0 +1,24 @@
+﻿## Interface: 40300
+## LoadOnDemand: 1
+## Title: Lib: StatLogic-1.2
+## Notes: A Library for stat conversion, calculation and summarization.
+## Notes-zhTW: 提供屬性換算、計算與加總的函式庫
+## Author: Whitetooth
+## X-eMail: hotdogee [at] gmail [dot] com
+## Version: 78
+## LastUpdate: $Date: 2012-04-22 21:20:43 +0000 (Sun, 22 Apr 2012) $
+## OptionalDeps: UTF8
+## X-Embeds: UTF8
+## X-Category: Library
+## X-License: LGPL v3.0
+## X-Encoding: UTF-8
+## X-Curse-Packaged-Version: r78
+## X-Curse-Project-Name: LibStatLogic-1.2
+## X-Curse-Project-ID: libstatlogic-1-2
+## X-Curse-Repository-ID: wow/libstatlogic-1-2/mainline
+
+LibStub\LibStub.lua
+UTF8\utf8data.lua
+UTF8\utf8.lua
+
+LibStatLogic-1.2\lib.xml

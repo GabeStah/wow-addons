@@ -1,0 +1,18 @@
+﻿## Interface: 30000
+## LoadOnDemand: 1
+## Title: Lib: SimpleTimer-1.0
+## Notes: A Simple Timer
+## Notes-zhTW: 提供簡單計時功能的函式庫
+## Author: Whitetooth
+## X-eMail: hotdogee [at] gmail [dot] com
+## X-Credits: Dongle Development Team
+## X-Category: Library
+## X-License: LGPL v2.1
+## X-Encoding: UTF-8
+## X-Curse-Packaged-Version: r33
+## X-Curse-Project-Name: LibSimpleTimer-1.0
+## X-Curse-Project-ID: libsimpletimer-1-0
+## X-Curse-Repository-ID: wow/libsimpletimer-1-0/mainline
+
+LibStub\LibStub.lua
+lib.xml

@@ -1,0 +1,59 @@
+------------------------------------------------------------------------
+r24 | mangeg | 2010-08-10 06:05:32 +0000 (Tue, 10 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/LibGUIFactory-1.0.lua
+
+- Relative width for dropdowns fixed.
+------------------------------------------------------------------------
+r23 | mangeg | 2010-07-24 16:35:15 +0000 (Sat, 24 Jul 2010) | 8 lines
+Changed paths:
+   M /trunk/LibGUIFactory-1.0.lua
+   M /trunk/Widgets/UIF-DropDown.lua
+   M /trunk/Widgets/UIF-DropDownItems.lua
+   M /trunk/Widgets/UIF-TreeGroup.lua
+
+- Fixed validation error on the config tables.
+#Widgets/UIF-DropDown:
+- Fixed the height of the pullout so it matches the items to prevent items falling outside on a large list.
+- Added .disabled to the possible values for lists, making it possible to set items disabled right away when passing the list in.
+#Widgets/UIF-DropDownItems:
+- Fixed the broken icon display.
+#Widgets/UIF-TreeGroup:
+- Added sorting when inserting groups with AddGroup().
+------------------------------------------------------------------------
+r22 | mangeg | 2010-07-22 09:51:45 +0000 (Thu, 22 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/LibGUIFactory-1.0.lua
+
+- Added PositionSlider(self, type, text, db, key, step, callback, relativeWidth) where type is "x" or "y". It will automatically set max and min depending on users screen res.
+------------------------------------------------------------------------
+r21 | mangeg | 2010-07-19 14:19:01 +0000 (Mon, 19 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/LibGUIFactory-1.0.lua
+   A /trunk/Libs
+
+- Using proper rev number again, since text-replacements caused problems with svn-external.
+------------------------------------------------------------------------
+r20 | mangeg | 2010-07-12 21:26:13 +0000 (Mon, 12 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk
+   M /trunk/.pkgmeta
+   M /trunk/LibGUIFactory-1.0.lua
+   M /trunk/LibGUIFactory-1.0.toc
+
+- Update for new AceGUI-LSMWidgets that don't set the default list when widget:SetList() is called with no arguments.
+- OptDept to LSM and AceGUI-LSMWidgets for no lib running.
+------------------------------------------------------------------------
+r19 | mangeg | 2010-07-10 02:16:00 +0000 (Sat, 10 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/LibGUIFactory-1.0.lua
+
+- Add Sound as a valid LSMDropdown.
+------------------------------------------------------------------------
+r18 | mangeg | 2010-07-04 13:55:03 +0000 (Sun, 04 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/Widgets/UIF-Label.lua
+
+#UIF-Label.lua:
+- Align text vertically to the center.
+------------------------------------------------------------------------

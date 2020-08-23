@@ -1,0 +1,69 @@
+--[[ 
+Objective Categories:
+FLAG: A status value that can be evaluated with a boolean verification function. Appropriate value can be verified frequently (every 1 sec or similar). Icon/Color indicator near FLAG items in list to show status (OK, NOT OK, etc) Ex. Click-to-Move Enabled, Talents: Untalented, Autorun: Off, etc.
+
+Task Layout:
+Task Title
+Description
+Primary Objective
+(
+- Child Objective - Note
+AND
+- Child Objective
+)
+(
+- Child Objective
+OR
+- Child Objective
+)
+(
+Secondary Objective - Note
+OR
+Tertiary Objective
+)
+Requirements:
+
+EXAMPLE:
+Balls of Steel
+Show those Alliance scum that you aren't one to be messed with.  Enter any one of the listed Alliance zones at the marked entrance location, turn on PVP to show them you aren't afraid, and start walking to the other side!  Remember not to mount or stealth!
+Requirements:
+- Stealth: Status - Do not use stealth effects.
+- Mount: Unmounted - Do not ride a mount.
+- PVP: Flag - PVP flag enabled.
+- Autorun: Disabled - Turn off autorun (so you are walking).
+(
+Objective A: Zone: Enter - Enter zone Dun Morogh
+1. Location: GoTo - Go to the east entrance of Dun Morogh (85, 45).
+2. Location: GoTo - Go to the west area of Dun Morogh near Gnomeregan (25, 36).
+3. Mob: Attack - Deal damage to Mob A.
+OR
+Objective B: Zone: Enter - Enter zone Stormwind
+1. Location: GoTo - Go to the southeast entrance of Stormwind (75, 65).
+2. Location: GoTo - Go to the auction house area (50, 50).
+3. Talk: Interact/talk-to an NPC
+)
+
+CHAIN OF EVENTS FOR EXAMPLE:
+EVENT_DISMOUNT: Pass/Fail all requirements. Fail.
+EVENT_AUTORUN_DISABLED: Pass/Fail all requirements. Fail.
+EVENT_ZONE_CHANGED: Dun Morogh.  Colorize matching Objective yellow to indicate met Objective, but colorized red Requirements still not met.
+EVENT_FLAG_PVP: Pass/Fail all requirements. Pass.  Check objective completions.
+CheckObjectiveCompletion()
+CompleteObjective() - Objective A: Zone: Enter - Enter Zone Dun Morogh
+EVENT_PLAYER_CHANGED_COORDINATES: Check for nearness to location.
+CheckObjectiveCompletion()
+CompleteObjective() - 1. Location: GoTo - Go to the east entrance of Dun Morogh (85, 45).
+EVENT_PLAYER_STEALTH: Pass/Fail all requirements. Fail. Reset Objective completion.  Colorize 1. Location: GoTo red as incomplete due to reset; Objective A: Zone as yellow due to complete but requirements unmet.  Requirement Stealth: Disabled as red due to fail.
+CheckObjectiveCompletion()
+EVENT_PLAYER_UNSTEALTH: Pass/Fail all requirements. Pass.
+CheckObjectiveCompletion()
+CompleteObjective() - Objective A: Zone: Enter - Enter zone Dun Morogh
+CompleteObjective() - 1. Location: GoTo - Go to the east entrance of Dun Morogh (85, 45).
+EVENT_PLAYER_CHANGED_COORDINATES: Check for nearness to location.
+CheckObjectiveCompletion()
+CompleteObjective() - 2. Location: GoTo - Go to the west area of Dun Morogh near Gnomeregan (25, 36).
+EVENT_PLAYER_DAMAGE_DEALT: Check mob ID.
+CheckObjectiveCompletion()
+CompleteObjective() - 3. Mob: Attack - Deal damage to Mob A.
+CompleteTask() - Balls of Steel
+]]

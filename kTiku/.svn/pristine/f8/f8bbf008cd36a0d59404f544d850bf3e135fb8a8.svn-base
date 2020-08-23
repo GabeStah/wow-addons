@@ -1,0 +1,44 @@
+-- Author      : Gabe
+-- Create Date : 2/15/2009 7:20:42 PM
+kTiku.minRequiredVersion = '0.0.100';
+kTiku.version = '0.0.100';
+kTiku.versions = {};
+
+kTiku.const = {};
+kTiku.const.chatPrefix = "<kTiku> ";
+kTiku.defaults = {
+	profile = {
+	},
+};
+kTiku.threading = {};
+kTiku.threading.timers = {};
+kTiku.threading.timerPool = {};
+-- Create Options Table
+kTiku.options = {
+    name = "kTiku",
+    handler = kTiku,
+    type = 'group',
+    args = {
+		description = {
+			name = '',
+			type = 'description',
+			order = 0,
+			hidden = true,
+		},	
+		show = {
+			name = 'Show',
+			type = 'execute',
+			desc = 'Show the main kTiku frame.',
+			guiHidden = true,
+			func = function()
+				if kTiku.auctions and #kTiku.auctions > 0 then
+					kTikuMainFrame:Show()
+				else
+					kTiku:Print("No auction data found on local client system -- hiding kTiku frame until valid auction data received.");
+				end
+			end,
+		},
+	},
+};
+
+

@@ -1,0 +1,13 @@
+## Title: kMacro |cffb5a5d5[0.6.123]|r |cff7fff7fAce3|r 
+## Version: 0.6.123
+## Author: Kulldam
+## Notes: Auto-changing logic-based macro management based on talents/specs.
+## Interface: 50001
+## SavedVariables: kMacroDB
+
+Embeds.xml
+Core.lua
+Options.lua
+Insert.lua
+_events.lua
+_utility.lua

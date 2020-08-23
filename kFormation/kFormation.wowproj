@@ -1,0 +1,64 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>kFormation</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{cdc349e1-787c-4914-9228-fafb10470a03}</ProjectGuid>
+    <AssemblyName>kFormation</AssemblyName>
+    <RootNamespace>kFormation</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="embeds.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="Frames\Core.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="Frames\Widgets\PointTemplate.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="kFormation.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kFormation.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="kFormation_Gui.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kFormation_Nav.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kFormation_Options.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kFormation_Point.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kFormation_Threading.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="_docs\Scope 1.0.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Frames" />
+    <Folder Include="Frames\Widgets" />
+    <Folder Include="_docs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\2.0\WowAddonStudio.targets" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>

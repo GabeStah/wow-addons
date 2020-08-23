@@ -1,0 +1,27 @@
+## Title: kEPGP
+## Version: 0.5.143
+## Author: Kulldam
+## Notes: A helper addon for automating EP rewards for EPGP.
+## Interface: 62000
+## SavedVariables: kEPGPDB
+## Dependencies: epgp
+## X-Curse-Packaged-Version: r20150703042344
+## X-Curse-Project-Name: kEPGP
+## X-Curse-Project-ID: kepgp
+## X-Curse-Repository-ID: wow/kepgp/mainline
+
+embeds.xml
+core.lua
+
+actor.lua
+comm.lua
+events.lua
+guild.lua
+manual.lua
+options.lua
+raid.lua
+role.lua
+roster.lua
+test.lua
+timer.lua
+view.lua

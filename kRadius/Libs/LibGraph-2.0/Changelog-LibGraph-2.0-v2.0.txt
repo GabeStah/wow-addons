@@ -1,0 +1,140 @@
+------------------------------------------------------------------------
+r39 | xinhuan | 2008-10-30 22:28:01 +0000 (Thu, 30 Oct 2008) | 1 line
+Changed paths:
+   A /tags/v2.0 (from /trunk:38)
+
+Tag v2.0
+------------------------------------------------------------------------
+r38 | xinhuan | 2008-10-30 22:27:22 +0000 (Thu, 30 Oct 2008) | 1 line
+Changed paths:
+   M /trunk
+   M /trunk/LibGraph-2.0.toc
+
+Remove tsvn:logtemplate. Update TOC to 30000.
+------------------------------------------------------------------------
+r37 | nevcairiel | 2008-10-12 11:39:42 +0000 (Sun, 12 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibGraph-2.0.toc
+
+Patch 3.0 prep: Remove LoD from Libraries that have no load manager (LoD+OptDep Bug)
+------------------------------------------------------------------------
+r36 | nevcairiel | 2008-10-09 21:52:46 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibGraph-2.0/LibGraph-2.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r35 | root | 2008-09-29 21:28:32 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r33 | root | 2008-09-29 20:58:17 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/LibGraph-2.0
+   A /trunk (from /tmp/trunk/LibGraph-2.0:32)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r32 | xinhuan | 2008-09-28 05:12:24 +0000 (Sun, 28 Sep 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: Add X-Email to TOC.
+------------------------------------------------------------------------
+r28 | xinhuan | 2008-04-10 19:04:52 +0000 (Thu, 10 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+
+LibGraph-2.0: Optimize the library slightly by upvalueing all the math.blah function calls and constants.
+------------------------------------------------------------------------
+r27 | xinhuan | 2008-03-25 19:34:33 +0000 (Tue, 25 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: Update TOC to 20400
+------------------------------------------------------------------------
+r25 | nevcairiel | 2008-03-20 13:11:30 +0000 (Thu, 20 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: 
+- adjust .toc title for library format
+------------------------------------------------------------------------
+r24 | xinhuan | 2008-01-12 11:42:17 +0000 (Sat, 12 Jan 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/line.tga
+
+LibGraph-2.0:
+- Set default drawn lines to draw on "ARTWORK" layer if it isn't specified
+- Replace the 65580 bytes line.tga with a 764 bytes line.tga version that is identical, but merely with run length encoding enabled.
+------------------------------------------------------------------------
+r23 | xinhuan | 2008-01-11 05:50:45 +0000 (Fri, 11 Jan 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+
+LibGraph-2.0:
+- Properly embed and upgrade all library functions for all existing created graphs on a library upgrade. This wasn't done in Graph-1.0
+- Switched order of some initialization code
+- Get rid of some globals
+------------------------------------------------------------------------
+r22 | xinhuan | 2008-01-11 04:48:36 +0000 (Fri, 11 Jan 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+
+LibGraph-2.0:
+- Provide a more descriptive error message if the debugstack(1,1,0) call fails to retrieve the path LibGraph-2.0.lua is located in
+- Update test functions messages
+------------------------------------------------------------------------
+r21 | xinhuan | 2008-01-03 22:42:43 +0000 (Thu, 03 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: Remove stray debug message, revert to LoD status, add ## X-Category: Library
+------------------------------------------------------------------------
+r20 | xinhuan | 2008-01-03 22:36:33 +0000 (Thu, 03 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibGraph-2.0
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: Fix internal paths, update test functions, remove AceLibrary calls, fix TOC, set tsvn:logtemplate.
+------------------------------------------------------------------------
+r19 | xinhuan | 2008-01-03 21:41:20 +0000 (Thu, 03 Jan 2008) | 1 line
+Changed paths:
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-1.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-128.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-16.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-2.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-32.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-4.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-64.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/1-8.tga
+   M /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/line.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/sline.tga
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/triangle.tga
+
+LibGraph-2.0: Add all the texture files and have all of them in the same folder as LibGraph-2.0.lua instead of separate folders. Modify some paths in the code.
+------------------------------------------------------------------------
+r18 | joshborke | 2008-01-03 21:09:19 +0000 (Thu, 03 Jan 2008) | 1 line
+Changed paths:
+   A /tmp/trunk/LibGraph-2.0/LibStub.lua
+
+LibGraph-2.0: Add in LibStub
+------------------------------------------------------------------------
+r17 | joshborke | 2008-01-03 21:05:44 +0000 (Thu, 03 Jan 2008) | 4 lines
+Changed paths:
+   A /tmp/trunk/LibGraph-2.0
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+   A /tmp/trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0
+- initial import
+- convert GraphLib-1.0 to use LibStub
+
+------------------------------------------------------------------------

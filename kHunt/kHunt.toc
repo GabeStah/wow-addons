@@ -1,0 +1,15 @@
+## Title: kHunt |cffb5a5d5[0.0.100]|r |cff7fff7fAce3|r 
+## Version: 0.0.100
+## Author: Kulldam
+## Notes: ADDON DESCRIPTION
+## Interface: 50000
+## SavedVariables: kHuntDB
+
+Embeds.xml
+enUS.lua
+Core.lua
+Options.lua
+Objective.lua
+Requirement.lua
+_events.lua
+_utility.lua

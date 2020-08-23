@@ -1,0 +1,21 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Frame name="kFormationMainFrame" frameStrata="HIGH" toplevel="true" enableMouse="true" movable="true" parent="UIParent" resizable="true">
+		<Size>
+			<AbsDimension x="70" y="70"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="350" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<GameTooltip name="kFormationTooltip" inherits="GameTooltipTemplate">
+		<Scripts>
+			<Onload>
+				self:SetOwner(WorldFrame, "ANCHOR_NONE");
+			</Onload>
+		</Scripts>
+	</GameTooltip>
+</Ui>

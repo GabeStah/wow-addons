@@ -1,0 +1,24 @@
+## Title: kAuction |cffb5a5d5[2.1.118]|r |cff7fff7fAce3|r 
+## Version: 2.1.118
+## Author: Kulldam
+## Notes: Simple item auctioning system.
+## Interface: 50001
+## SavedVariables: kAuctionDB, kAuctionRaidDB
+
+Embeds.xml
+Core.lua
+Client\Core.lua
+Gui\Core.lua
+Gui\Bid.lua
+Gui\BidTabs.lua
+Gui\CurrentItem.lua
+Gui\EncounterJournal.lua
+Gui\Events.lua
+Gui\ItemsWon.lua
+Gui\Whisper.lua
+Gui\Wishlist.lua
+Item\Core.lua
+Options\Core.lua
+Server\Core.lua
+WeakAuras\Core.lua
+Wishlist\Core.lua

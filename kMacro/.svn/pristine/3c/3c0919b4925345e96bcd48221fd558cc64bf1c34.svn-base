@@ -1,0 +1,3 @@
+function kMacro:PLAYER_ENTERING_WORLD()
+	RegisterAddonMessagePrefix("kMacro")
+end

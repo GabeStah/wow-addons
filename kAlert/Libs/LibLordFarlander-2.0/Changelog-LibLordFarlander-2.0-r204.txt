@@ -1,0 +1,64 @@
+------------------------------------------------------------------------
+r204 | lordfarlander | 2010-07-04 17:25:37 +0000 (Sun, 04 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/LibLordFarlander-SpecialEvents-Mount-4.0/LibLordFarlander-SpecialEvents-Mount-4.0.lua
+
+LibLordFarlander-2.0:
+- Fix several strings so that Kindred Spirits on non-English clients does not set of the Mounted callback
+------------------------------------------------------------------------
+r203 | lordfarlander | 2010-07-03 22:29:36 +0000 (Sat, 03 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/LibLordFarlander-SpecialEvents-Mount-4.0/LibLordFarlander-SpecialEvents-Mount-4.0.lua
+
+LibLordFarlander-2.0:
+- Revert out IsMounted check for now, it is very problematic in additional testing
+------------------------------------------------------------------------
+r202 | lordfarlander | 2010-07-03 19:24:50 +0000 (Sat, 03 Jul 2010) | 4 lines
+Changed paths:
+   M /trunk
+   M /trunk/DataMine-CrittersAndMounts.lua
+   M /trunk/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0.lua
+   M /trunk/LibLordFarlander-SpecialEvents-Mount-4.0/LibLordFarlander-SpecialEvents-Mount-4.0.lua
+   M /trunk/datacache.xml
+   M /trunk/datacache.xsd
+   M /trunk/datacache.xsl
+
+LibLordFarlander-2.0:
+- LibLordFarlander-SpecialEvents-Mount-4.0: Don't bother checking new auras if IsMounted() return false
+- Update the database with beta information
+- Improvements to the pet and critter miner to fix with wowhead changes and beta support, as well as better ptr support
+------------------------------------------------------------------------
+r201 | lordfarlander | 2010-06-27 20:12:29 +0000 (Sun, 27 Jun 2010) | 2 lines
+Changed paths:
+   M /trunk/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0.lua
+
+LibLordFarlander-2.0:
+- Opps only updated the build database, not the in-game
+------------------------------------------------------------------------
+r200 | lordfarlander | 2010-06-27 20:11:57 +0000 (Sun, 27 Jun 2010) | 2 lines
+Changed paths:
+   M /trunk/DataMine-CrittersAndMounts.lua
+   M /trunk/datacache.xml
+   M /trunk/datacache.xsd
+   M /trunk/datacache.xsl
+
+LibLordFarlander-2.0:
+- Update database
+------------------------------------------------------------------------
+r199 | lordfarlander | 2010-06-21 14:28:34 +0000 (Mon, 21 Jun 2010) | 2 lines
+Changed paths:
+   M /trunk/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0.lua
+   M /trunk/datacache.xml
+   M /trunk/datacache.xsd
+
+LibLordFarlander-2.0:
+- Add Frigid Frostling to the database
+------------------------------------------------------------------------
+r198 | lordfarlander | 2010-05-03 18:31:47 +0000 (Mon, 03 May 2010) | 2 lines
+Changed paths:
+   M /trunk/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0/LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0.lua
+   M /trunk/datacache.xml
+
+LibLordFarlander-2.0:
+- Fix X-53 Touring Rocket, it is flying only not ground and flying
+------------------------------------------------------------------------

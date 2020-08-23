@@ -1,0 +1,10 @@
+## Title: kAnnouncer
+## Version: 0.001
+## Author: Kulldam
+## Notes: Announcement and warning system for user-specified events.
+## Interface: 40300
+## SavedVariables: kAnnouncerDB
+
+embeds.xml
+kAnnouncer.lua
+kAnnouncer_Options.lua

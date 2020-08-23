@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r66 | whitetooth | 2011-06-28 15:13:50 +0000 (Tue, 28 Jun 2011) | 1 line
+Changed paths:
+   M /trunk/LibStatLogic-1.2.toc
+
+- toc 40200
+------------------------------------------------------------------------
+r65 | whitetooth | 2011-06-27 01:08:41 +0000 (Mon, 27 Jun 2011) | 7 lines
+Changed paths:
+   M /trunk/LibStatLogic-1.2/LibStatLogic-1.2.lua
+
+- Fixed GetDodgePerAgi() when player has a D["Stat Multiplier"] buff
+- 4.2.0: GetDodgePerAgi(), GetBaseDodge(class): Death knights, paladins, and warriors no longer receive any bonus to their chance to dodge from Agility. Their base chance to dodge is now a fixed 5%.
+- 4.2.0: StatModTable: Death knights, paladins, and warriors now receive 27% of their Strength bonuses as parry rating, up from 25%.
+- 4.2.0: Death Knight: Unholy Might now increases Strength by 20%, up from 5%.
+- 4.2.0: Druid: Now gain 1 attack power per point of Strength, down from 2.
+- 4.2.0: Rogue: Savage Combat now increases attack power by 3/6%, up from 2/4%.
+- 4.2.0: Rogue: Vitality now increases attack power by 30%, up from 25%.
+------------------------------------------------------------------------
+r64 | Whitetooth | 2011-05-08 03:30:28 +0000 (Sun, 08 May 2011) | 1 line
+Changed paths:
+   M /trunk/LibStatLogic-1.2/LibStatLogic-1.2.lua
+
+- Increase tip and tipMiner to 40 lines
+------------------------------------------------------------------------

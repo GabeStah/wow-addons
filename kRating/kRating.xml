@@ -1,0 +1,29 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="kRating.lua" />
+
+
+	<!-- START MainFrame -->
+	<Frame name="kRating_Bars_DR" frameStrata="HIGH" toplevel="true" enableMouse="true" movable="true" parent="UIParent">
+		<!-- Scripts -->
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<!-- sizing -->
+		<Size>
+			<AbsDimension x="150" y="150"/>
+		</Size>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="4" right="4" top="4" bottom="4"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<!-- END MainFrame -->
+	</Frame>
+	
+</Ui>

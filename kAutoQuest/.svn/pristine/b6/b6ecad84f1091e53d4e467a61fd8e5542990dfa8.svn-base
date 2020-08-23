@@ -1,0 +1,35 @@
+------------------------------------------------------------------------
+r1049 | mikk | 2012-04-02 13:22:10 +0000 (Mon, 02 Apr 2012) | 1 line
+Changed paths:
+   M /trunk/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua
+
+Make style="radio" selects sorted on value.
+------------------------------------------------------------------------
+r1048 | mikk | 2012-03-24 19:38:00 +0000 (Sat, 24 Mar 2012) | 3 lines
+Changed paths:
+   M /trunk/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua
+
+Aaaand bump the minor
+~lart Mikk
+
+------------------------------------------------------------------------
+r1047 | mikk | 2012-03-24 19:37:40 +0000 (Sat, 24 Mar 2012) | 1 line
+Changed paths:
+   M /trunk/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua
+
+Set staticpopupdialog preferredIndex=3 as per http://www.tukui.org/forums/topic.php?id=15823 to reduce chance of UI taint
+------------------------------------------------------------------------
+r1046 | mikk | 2012-03-24 18:46:53 +0000 (Sat, 24 Mar 2012) | 1 line
+Changed paths:
+   M /trunk/AceGUI-3.0/widgets/AceGUIWidget-MultiLineEditBox.lua
+
+Allow shift+click-ing things into multiline editbox (just like single-line editbox)
+------------------------------------------------------------------------
+r1045 | nevcairiel | 2011-12-09 17:58:40 +0000 (Fri, 09 Dec 2011) | 1 line
+Changed paths:
+   M /trunk/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.lua
+   M /trunk/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua
+   M /trunk/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.lua
+
+AceConfig-3.0: Allow a function for the "hasAlpha" property on the color option
+------------------------------------------------------------------------

@@ -1,0 +1,62 @@
+# Copyright (c) 2008, LordFarlander
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#     * Redistributions of source code must retain the above copyright notice,
+#       this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice,
+#       this list of conditions and the following disclaimer in the documentation
+#       and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+## X-Curse-Packaged-Version: r204
+## X-Curse-Project-Name: LibLordFarlander-2.0
+## X-Curse-Project-ID: liblordfarlander-2-0
+## X-Curse-Repository-ID: wow/liblordfarlander-2-0/mainline
+
+## Interface: 30300
+## Title: Lib: LibLordFarlander-2.0
+## Version: 2.0.204
+## Author: lordfarlander
+## Notes: Helper functions used by my addons, feel free to use them in your addon too
+## Dependencies: LibStub,Ace3,LibGratuity-3.0,LibKeyBound-1.0,LibPeriodicTable-3.1,LibStickyFrames-2.0,LibBabble-Zone-3.0
+## OptionalDeps: ButtonFacade
+## X-Category: Library
+## X-AceLibrary-LibLordFarlander-2.0: true
+## X-AceLibrary-LibLordFarlander-ItemList-2.0: true
+## X-AceLibrary-LibLordFarlander-UI-2.0: true
+## X-AceLibrary-LibLordFarlander-SpecialEvents-Aura-4.0: true
+## X-AceLibrary-LibLordFarlander-SpecialEvents-Mount-4.0: true
+## X-AceLibrary-LibLordFarlander-SpecialEvents-LearnSpell-4.0: true
+## X-AceLibrary-LibLordFarlander-SpecialEvents-Skill-4.0: true
+## X-AceLibrary-LibLordFarlander-PetAndMountDatabase-1.1: true
+## X-AceLibrary-LibLordFarlander-Randomizer-2.0: true
+## X-AceLibrary-LibLordFarlander-Glory-3.0: true
+## X-AceLibrary-LibLordFarlander-TableRecycler-1.0: true
+## X-License: BSD
+## X-PeriodicTable-3.1-Module: LibLordFarlander-PetAndMountDatabase-2.0
+## X-Revision: 204
+
+LibLordFarlander-TableRecycler-1.0\lib.xml
+LibLordFarlander-2.0\lib.xml
+LibLordFarlander-ItemList-2.0\lib.xml
+LibLordFarlander-UI-2.0\lib.xml
+LibLordFarlander-SpecialEvents-Aura-4.0\lib.xml
+LibLordFarlander-SpecialEvents-Mount-4.0\lib.xml
+LibLordFarlander-SpecialEvents-LearnSpell-4.0\lib.xml
+LibLordFarlander-SpecialEvents-Skill-4.0\lib.xml
+LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase\LibLordFarlander-PeriodicTable-3.1-PetAndMountDatabase-2.0.lua
+LibLordFarlander-PetAndMountDatabase-1.1\lib.xml
+LibLordFarlander-Glory-3.0\lib.xml
+LibLordFarlander-Randomizer-2.0\lib.xml

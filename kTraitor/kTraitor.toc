@@ -1,0 +1,13 @@
+## Author: Kulldam
+## Interface: 40300
+## Notes: kTraitor is an assistance Module for the Traitor King achievement in Trial of the Crusade.
+## SavedVariables: kTraitorDB
+## Title: kTraitor |cffb5a5d5[r2]|r |cff7fff7fAce3|r
+## Version: r2
+embeds.xml
+kTraitor.lua
+kTraitor_Threading.lua
+kTraitor_Options.lua
+kTraitor_Gui.lua
+kTraitor_Client.lua
+kTraitor_Server.lua

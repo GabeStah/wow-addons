@@ -1,0 +1,79 @@
+------------------------------------------------------------------------
+r118 | ddumont | 2009-09-14 19:47:41 +0000 (Mon, 14 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+removal of legacy testing code.
+------------------------------------------------------------------------
+r116 | ddumont | 2009-08-24 01:34:48 +0000 (Mon, 24 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r115 | ddumont | 2009-08-24 01:33:39 +0000 (Mon, 24 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r114 | ddumont | 2009-08-24 01:31:58 +0000 (Mon, 24 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r113 | ddumont | 2009-08-24 01:29:39 +0000 (Mon, 24 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r112 | ddumont | 2009-08-24 01:03:32 +0000 (Mon, 24 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r111 | ddumont | 2009-08-24 01:02:07 +0000 (Mon, 24 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r110 | ddumont | 2009-08-23 15:04:15 +0000 (Sun, 23 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r109 | ddumont | 2009-08-23 14:58:44 +0000 (Sun, 23 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r108 | ddumont | 2009-08-23 13:32:43 +0000 (Sun, 23 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+doc updates
+------------------------------------------------------------------------
+r107 | ddumont | 2009-08-19 15:20:00 +0000 (Wed, 19 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+fixing nil table in event callbacks for new rows after resize
+------------------------------------------------------------------------
+r102 | ddumont | 2009-08-16 15:04:09 +0000 (Sun, 16 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+fixing dynamic table creation...  eats memory for breakfast
+------------------------------------------------------------------------
+r101 | ddumont | 2009-08-05 23:26:53 +0000 (Wed, 05 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+don't need no stinkin -nolib :)
+------------------------------------------------------------------------

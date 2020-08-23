@@ -1,0 +1,13 @@
+## Author: Kulldam
+## Interface: 40300
+## Notes: kNecroticPlague is an assistance Module for the Traitor King achievement in Trial of the Crusade.
+## SavedVariables: kNecroticPlagueDB
+## Title: kNecroticPlague |cffb5a5d5[r1]|r |cff7fff7fAce3|r
+## Version: r2
+embeds.xml
+kNecroticPlague.lua
+kNecroticPlague_Threading.lua
+kNecroticPlague_Options.lua
+kNecroticPlague_Gui.lua
+kNecroticPlague_Client.lua
+kNecroticPlague_Server.lua

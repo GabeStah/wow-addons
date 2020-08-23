@@ -1,0 +1,18 @@
+eventConditions {
+	occurrence {
+		type = INT
+		allowFormula = true (ex. x==1 or (x >= 3 and x % 3))
+		opts {
+			all / every -- Every 1 occurrence (DEFAULT all)
+			every n -- Every nth occurrence
+			skip n -- Skip first n occurrences
+			limit n -- Stop at n occurrences
+		}
+		logicalOperators {
+			or
+			and
+		}
+		required = false
+		enabled = true
+	}
+}

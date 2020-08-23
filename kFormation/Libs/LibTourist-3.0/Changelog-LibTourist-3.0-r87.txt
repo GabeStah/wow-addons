@@ -1,0 +1,20 @@
+------------------------------------------------------------------------
+r87 | sutorix | 2009-06-19 05:10:56 +0000 (Fri, 19 Jun 2009) | 1 line
+Changed paths:
+   M /trunk/LibTourist-3.0.lua
+
+LibTourist-3-0: Update/add minimum fishing skill information.
+------------------------------------------------------------------------
+r86 | ckknight | 2009-06-15 15:58:58 +0000 (Mon, 15 Jun 2009) | 1 line
+Changed paths:
+   M /trunk/LibTourist-3.0.lua
+
+Small fixes, add Strand of the Ancients support.
+------------------------------------------------------------------------
+r85 | starinnia | 2009-04-22 14:39:33 +0000 (Wed, 22 Apr 2009) | 1 line
+Changed paths:
+   M /trunk/LibTourist-3.0.lua
+   M /trunk/LibTourist-3.0.toc
+
+Uncomment Ulduar related lines since the instance exists now
+------------------------------------------------------------------------

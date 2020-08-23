@@ -1,0 +1,37 @@
+-- Create Mixins
+kTiku = LibStub("AceAddon-3.0"):NewAddon("kTiku", "AceComm-3.0", "AceConsole-3.0", "AceEvent-3.0", "AceHook-3.0", "AceSerializer-3.0", "AceTimer-3.0")
+
+function kTiku:OnInitialize()
+    -- Load Database
+    kTiku.db = LibStub("AceDB-3.0"):New("kTikuDB", kTiku.defaults)
+    -- Inject Options Table and Slash Commands
+	kTiku.options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(kTiku.db)
+	kTiku.config = LibStub("AceConfig-3.0"):RegisterOptionsTable("kTiku", kTiku.options, {"ktiku", "kt"})
+	kTiku.dialog = LibStub("AceConfigDialog-3.0")
+	kTiku.AceGUI = LibStub("AceGUI-3.0")
+	kTiku.cb = LibStub:GetLibrary("CallbackHandler-1.0")
+	kTiku.sharedMedia = LibStub:GetLibrary("LibSharedMedia-3.0")
+	-- Init Events
+	kTiku:InitializeEvents()
+	-- Comm registry
+	kTiku:RegisterComm("kTiku")
+end
+-- PURPOSE: Initialize the events to monitor and fire
+function kTiku:InitializeEvents()
+	-- Add events here
+	-- e.g.: kTiku:RegisterEvent("ZONE_CHANGED_NEW_AREA");
+end
+function kTiku:SendCommunication(command, data)
+	kTiku:SendCommMessage("kTiku", kTiku:Serialize(command, data), "RAID")
+end
+function kTiku:OnCommReceived(prefix, serialObject, distribution, sender)
+	kTiku:Debug("FUNC: OnCommReceived, FIRE", 3)
+	local success, command, data = kTiku:Deserialize(serialObject)
+	if success then
+		if prefix == "kTiku" and distribution == "RAID" then
+			if command == "SomeCommand" then
+				-- Add command
+			end
+		end
+	end
+end

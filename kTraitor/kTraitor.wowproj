@@ -1,0 +1,52 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>kTraitor</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{bf257c21-62ed-48c3-8684-07dd73a6e841}</ProjectGuid>
+    <AssemblyName>MyAddon</AssemblyName>
+    <RootNamespace>MyAddon</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="embeds.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="kTraitor.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kTraitor.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="kTraitor_Client.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kTraitor_Gui.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kTraitor_Options.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kTraitor_Server.lua">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="kTraitor_Threading.lua">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\2.0\WowAddonStudio.targets" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>

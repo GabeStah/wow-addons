@@ -1,0 +1,62 @@
+9
+
+dir
+3
+svn://gabestah@svn.curseforge.net/wow/kformation/mainline/trunk/Libs
+svn://gabestah@svn.curseforge.net/wow/kformation/mainline
+
+
+
+2009-06-24T03:39:00.855794Z
+3
+gabestah
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+LibQTip-1.0
+dir
+
+LibEffects-1.0
+dir
+
+TabletLib
+dir
+
+CandyBar
+dir
+
+RosterLib
+dir
+
+AceGUI-3.0-SharedMediaWidgets
+dir
+
+Ace3
+dir
+
+LibSharedMedia-3.0
+dir
+
+LibTourist-3.0
+dir
+
